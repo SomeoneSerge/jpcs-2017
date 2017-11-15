@@ -95,6 +95,8 @@ We use the abstract method of similar operators
 First we state the required notation and theorems
     in a simplified form that accounts for finite-dimensionality
     of the problem.
+For a more in-depth introduction to the method
+    refer to~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}.
 
 Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
     be a field of either real or complex numbers.
@@ -110,14 +112,11 @@ We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
     \(
         \|x\|_2^2{=}(x,x).
         \)
-The space of matrices of the size \( m{\times}n \)
-    with the entries in the field \( \mathbb{K} \)
-    will be denoted by \( \mathbb{K}^{m{\times}n} \).
-When \( V_1, V_2 \) are normed vector spaces,
-    we denote the space of bounded linear mappings
-    from \( V_1 \) to \( V_2 \)
-    as \( L(V_1, V_2) \).
-The algebra of bounded linear endomorphisms
+When \( V_1, V_2 \) are normed vector spaces
+    we denote by \( L(V_1, V_2) \)
+    the space of bounded linear mappings
+    from \( V_1 \) to \( V_2 \).
+An algebra of bounded linear endomorphisms
     from a banach space \( V \)
     into itself
     is denoted by \( L(V) = L(V, V) \).
@@ -126,27 +125,28 @@ It is a banach algebra with the operator norm:
         \|A\|_{\mathrm{op}} =
         \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ A\in L(V).
         \]
-Aside from \( L(\mathbb{K}^n) \)
-    we will consider its isomorphic
-    space \( \mathbb{K}^{n{\times}n} \)
-    of \( (n{\times}n) \)-sized matrices
-    supplied with one of the following norms:
-    \( \|A\|_{\mathrm{op}} = \sup_{\|x\|=1,\ x\in \mathbb{K}^n} \|A x\|_2,\ \)
+Together with \( L(\mathbb{K}^n, \mathbb{K}^m) \)
+    we consider its isomorphic space \( \mathbb{K}^{m{\times}n} \)
+    of matrices of the size \( m{\times}n \)
+    with the entries from the field \( \mathbb{K} \).
+The space \( \mathbb{K}^{n{\times}n}\sim L(\mathbb{K}^n) \)
+    forms a Banach algebra
+    when supplied with one of the following norms:
+    \( \|A\|_{\mathrm{op}} = \sup_{\|x\|_2=1,\ x\in \mathbb{K}^n} \|A x\|_2,\ \)
     \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
     for a matrix 
     \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
-The isomorphic spaces \( L(L(V)) \) and \( L(\mathbb{K}^{n{\times}n}) \)
-    with the operator norm will also be used.
-This is a space
-    of linear mappings of operators
+Finally we are going to need isomorphic spaces
+    \( L(L(\mathbb{K}^n)) \) and \( L(\mathbb{K}^{n{\times}n}) \)
+    with the operator norm.
 We will follow {Krein MG\todo{cite smth}}
-    and refer to its elements
-    as ``transformators''.
+    and refer to elements of \( L(\mathbb{K}^{n{\times}n}) \)
+    as ``transformers''.
 
-The spectrum of the matrix \( A \)
+The spectrum of a matrix \( A \)
     (the set of its eigenvalues)
     will be denoted as \( \sigma(A) \).
-We call two matrices \( A_1, A_2 \) similar
+We call two matrices \( A_1, A_2 \) \emph{similar}
     if there is an invertible matrix \( U \)
     (called similarity matrix)
     such that \( A_1 U = U A_2 \).
