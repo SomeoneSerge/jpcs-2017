@@ -11,7 +11,7 @@
 
 \author{Sergey V Kozlukov}
 
-\address{{POSITION\todo{Probably not-a-student?}}, \emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+\address{\emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
 
 \ead{ithesaboteur@yandex.com}
 
@@ -106,17 +106,17 @@ We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
         \ y=(y_1,\ldots, y_n)
         \in \mathbb{K}^n
         \]
-    and the norm defined by formula
+    and the norm defined by the formula
     \(
         \|x\|_2^2{=}(x,x).
         \)
 The space of matrices of the size \( m{\times}n \)
     with the entries in the field \( \mathbb{K} \)
     will be denoted by \( \mathbb{K}^{m{\times}n} \).
-If \( V_1, V_2 \) are normed vector spaces,
-    then the space of bounded linear mappings
+When \( V_1, V_2 \) are normed vector spaces,
+    we denote the space of bounded linear mappings
     from \( V_1 \) to \( V_2 \)
-    will be denoted by \( L(V_1, V_2) \).
+    as \( L(V_1, V_2) \).
 The algebra of bounded linear endomorphisms
     from a banach space \( V \)
     into itself
@@ -126,7 +126,7 @@ It is a banach algebra with the operator norm:
         \|A\|_{\mathrm{op}} =
         \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ A\in L(V).
         \]
-Specifically, aside from \( L(\mathbb{K}^n) \)
+Aside from \( L(\mathbb{K}^n) \)
     we will consider its isomorphic
     space \( \mathbb{K}^{n{\times}n} \)
     of \( (n{\times}n) \)-sized matrices
@@ -135,10 +135,25 @@ Specifically, aside from \( L(\mathbb{K}^n) \)
     \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
     for a matrix 
     \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
-We will follow {Krein MG\todo{cite smth}}
-    and refer to elements of the space \( L(L(V)) \)
+The isomorphic spaces \( L(L(V)) \) and \( L(\mathbb{K}^{n{\times}n}) \)
+    with the operator norm will also be used.
+This is a space
     of linear mappings of operators
-    as "transformators".
+We will follow {Krein MG\todo{cite smth}}
+    and refer to its elements
+    as ``transformators''.
+
+The spectrum of the matrix \( A \)
+    (the set of its eigenvalues)
+    will be denoted as \( \sigma(A) \).
+We call two matrices \( A_1, A_2 \) similar
+    if there is an invertible matrix \( U \)
+    (called similarity matrix)
+    such that \( A_1 U = U A_2 \).
+Similar matrices share some spectral properties:
+    they are isospectral (\( \sigma(A_1) = \sigma(A_2) \))
+    and \( U \) maps eigenvectors of one to another's:
+    \( A_2 x = \lambda x \implies A_1 U x = \lambda U x \).
 \section*{References}
 \bibliographystyle{iopart-num}
 \bibliography{sergey_kozlukov_jpcs}{}
