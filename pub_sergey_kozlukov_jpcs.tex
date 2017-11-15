@@ -1,0 +1,98 @@
+\documentclass[a4paper]{jpconf}
+\usepackage{graphicx}
+\usepackage{iopams}
+
+\begin{document}
+\title{The method of similar operators
+in the study of graphs spectra}
+
+\author{Sergey V Kozlukov}
+
+\address{{POSITION?}\marginpar{TODO}, \emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+
+\ead{ithesaboteur@yandex.com}
+
+\begin{abstract}
+    The~method~of~similar~operators~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}
+        is used to investigate spectral properties
+        of certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
+    Specifically, we consider matrices
+        obtained as sums
+        of kronecker products~\cite{bellman-matrices-kron}
+        and small-norm perturbations.
+    The estimates of the spectrum and the eigenvectors
+        of such matrices are given.
+\end{abstract}
+
+\section{Introduction}
+Consider a~directed graph on \( N \) vertices.
+Its adjacency matrix is defined as
+    the matrix
+    \( A = (a_{ij}) \)
+    of the size \( N\times N \),
+    in which \( a_{ij} \)
+    is the number of edges
+    from the vertex \( i \)
+    to the vertex \( j \).
+One can also consider generalized
+    adjacency matrices~\cite{van2003graphs}
+    which are defined as
+    arbitrary linear combinations
+    of matrices \( A \) (or its transpose \( A^\mathtt{T} \)),
+    \( E \) (identity matrix)
+    and \( J \) (the all-ones matrix).
+These matrices arise naturally
+    in some stochastic models.
+The spectral  properties of these matrices
+    often play a vital role in such models.
+For instance, the markovian random walk on a~graph
+    yields the notion of the eigenvector centrality
+    in a~network~\cite{bonacich1972factoring}.
+The transition matrix of such a random walk
+    is a generalized adjacency matrix of the network graph.
+The score of the vertex \( i \)
+    is defined as the \( i \)'th coordinate
+    of the dominating eigenvector
+    of the transition matrix.
+The largest eigenvalue of the row-stochastic matrix
+    is \( 1 \) and the dominating eigenvector
+    defines the stationary distribution
+    of the random walk.
+The PageRank~\cite{ilprints422} algorithm
+    originally used by Google
+    to compute the eigenvector centrality
+    relies on the Power-Method.
+The speed of its convergence
+    is determined by the ratio
+    of the absolute values of
+    the two largest eigenvalues
+    of the transition matrix.
+The stability of the stationary distribution
+    is determined by a spectral gap
+    which is defined as the difference of
+    the two largest absolute eigenvalues.
+The method of estimation of almost-invariant sets proposed in~\cite{schwartz2006fluctuation}
+    relies as well on the spectral decomposition of such matrices.
+In the Susceptible-Infective-Susceptible model
+    a viral spread in a network
+    is modeled as a markov process
+    with \( 2^N \) states.
+The asymptotic (endemic or epidemic) behaviour of this system
+    is determined by the adjacency matrix spectral radius
+    and the rates of curage and infection.
+For more details and comprehensive description
+    the graph spectra theory
+    refer to~\cite{cvetkovic1980spectra,godsil2013algebraic}.
+
+We use the abstract method of similar operators
+    to derive estimates of eigenvalues and eigenvectors
+    of certain types of matrices.
+
+\section*{References}
+\IfFileExists{sergey_kozlukov_jpcs.bbl}{
+    \input{sergey_kozlukov_jpcs.bbl}
+}{
+    \bibliography{sergey_kozlukov_jpcs}{}
+    \bibliographystyle{unsrt}
+}
+\end{document}

@@ -1,0 +1,150 @@
+$(NAME)_flat.zip: $(ZIP_FLAT_CONTENTS)
+	rm -f $@
+	zip $@ $(ZIP_FLAT_CONTENTS)
+
+$(NAME)_pub.zip: $(ZIP_PUB_CONTENTS)
+	rm -f $@
+	zip $@ $(ZIP_PUB_CONTENTS)
+
+$(NAME).zip: $(ZIP_CONTENTS)
+	rm -f $@
+	zip $@ $(ZIP_CONTENTS)
+
+$(NAME)_local.zip: $(ZIP_LOCAL_CONTENTS)
+	rm -f $@
+	zip $@ $(ZIP_LOCAL_CONTENTS)
+
+.PHONY: clean
+
+clean:
+	rm -f $(DOCUMENTS) $(ZIPS)
+	rm -f $(addprefix pub/, $(SOURCES))
+	find -iname '*.run.xml' -exec rm -f \{\} \;
+	find -iname '*.aux' -exec rm -f \{\} \;
+	find -iname '*.bgl' -exec rm -f \{\} \;
+	find -iname '*.blg' -exec rm -f \{\} \;
+	find -iname '*.bcf' -exec rm -f \{\} \;
+	find -iname '*.bbl' -exec rm -f \{\} \;
+	find -iname '*.out' -exec rm -f \{\} \;
+	find -iname '*.log' -exec rm -f \{\} \;
+	find -iname '*.toc' -exec rm -f \{\} \;
+
+.PHONY: escape-accented-chars
+
+escape-accented-chars:
+	find -iname '*.tex' -exec sed -i 's/ё/\\"е/g' \{\} \;
+	sed -i 's/ё/\\"е/g' $(NAME).tex
+
+# ----
+# Local build
+# ----
+
+
+$(NAME).pdf: $(SOURCES) $(NAME).bbl
+	$(LTEX) $(NAME).tex
+	$(LTEX) $(NAME).tex
+	touch $@
+
+%.bbl: %.tex %.bib
+	rm -f $@
+	$(LTEX) $*.tex
+	$(LBIB) $*
+	touch $@
+
+%.pdf: %.toc %.tex
+	$(LTEX) *.tex
+	$(LTEX) *.tex
+	touch $@
+
+%.toc: %.tex
+	$(LTEX) $*.tex
+	touch $@
+
+# ----
+# Composing publishable output
+# ----
+
+pub:
+	mkdir pub
+
+# You can override a source file
+# for the publishable version
+# by creating a pub_* substitute file
+pub/%.tex: pub_%.tex pub
+	@mkdir -p $(shell dirname $@)
+	iconv -f utf8 -t $(OUTENC) $< -o $@
+
+pub/%: pub_% pub
+	cp -f $< $@
+
+pub/authors.pdf: authors.pdf | pub
+	cp -f $< $@
+
+# If there's no pub_% file
+# but there's %, then it'll be
+# `iconv`-ed to $(OUTENC), e.g. cp1251.
+# This is useful for .tex files
+pub/%.tex: %.tex pub
+	@echo : Making $@
+	@mkdir -p $(shell dirname $@)
+	iconv -f utf8 -t $(OUTENC) $< -o $@
+
+pub/%.bib: %.bib pub
+	@echo : Making $@
+	@mkdir -p $(shell dirname $@)
+	iconv -f utf8 -t $(OUTENC) $< -o $@
+
+pub/$(NAME).pdf: pub/$(NAME).toc $(PUB_SOURCES) pub/$(NAME).bbl
+	@echo : Making $@
+	cd pub ; $(PTEX) $(NAME).tex
+	cd pub ; $(PTEX) $(NAME).tex
+	touch $@
+
+pub/%.bbl: pub/%.tex pub/%.bib
+	rm -f $@
+	echo Making $@
+	cd pub ; $(PTEX) $*.tex
+	cd pub ; $(PBIB) $*
+	touch $@
+
+pub/%.pdf: pub/%.tex pub/%.toc pub
+	@echo : Making $@
+	cd pub ; $(PTEX) $*.tex
+	cd pub ; $(PTEX) $*.tex
+	touch $@
+
+pub/$(NAME).toc: $(PUB_SOURCES) pub
+	@echo : Making $@
+	cd pub ; $(PTEX) $(NAME).tex
+	touch $@
+
+# ---
+# Flat version
+# ---
+pub/$(NAME)_flat.tex: $(PUB_SOURCES)
+	cd pub ; python3 ../flatten.py $(NAME).tex --enc $(OUTENC) \
+        | iconv -f utf8 -t cp1251 \
+        > $(NAME)_flat.tex
+
+pub/$(NAME)_flat.pdf: pub/$(NAME)_flat.tex
+	cd pub ; pdflatex $(NAME)_flat.tex
+
+# ----
+# Helpers
+# ----
+
+# Pandoc helpers
+
+%.doc: %.md
+	pandoc $< -o $@
+
+%.rtf: %.md
+	pandoc $< -o $@
+
+%.pdf: %.md
+	pandoc --pdf-engine=xelatex -V mainfont='Anonymous Pro' -V mathfont='CMU Serif' $< -o $@
+
+# Printing helpers
+$(NAME)-updown.pdf: $(NAME).pdf
+	pdftk A="$<" shuffle Aodd Aevensouth output "$@"
+	touch $@

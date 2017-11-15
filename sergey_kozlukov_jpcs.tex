@@ -1,0 +1,145 @@
+\documentclass[a4paper]{jpconf}
+\usepackage{graphicx}
+\usepackage{iopams}
+% amsmath defined substack
+\usepackage{amsmath}
+
+\usepackage{todonotes}
+
+\begin{document}
+\title{The method of similar operators in the study of graph spectra}
+
+\author{Sergey V Kozlukov}
+
+\address{{POSITION\todo{Probably not-a-student?}}, \emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+
+\ead{ithesaboteur@yandex.com}
+
+\begin{abstract}
+    The~method~of~similar~operators~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}
+        is used to investigate spectral properties
+        of a certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
+    Specifically, we consider matrices
+        obtained as combinations
+        of kronecker products~\cite{bellman-matrices-kron}
+        and small-norm perturbations.
+    The estimates of the spectrum and the eigenvectors
+        of such matrices are given.
+\end{abstract}
+
+\section{Introduction}
+Consider a~directed graph on \( N \) vertices.
+Its adjacency matrix is defined as
+    the matrix
+    \( A = (a_{ij}) \)
+    of the size \( N\times N \),
+    in which \( a_{ij} \)
+    is the number of edges
+    from the vertex \( i \)
+    to the vertex \( j \).
+One can also consider generalized
+    adjacency matrices~\cite{van2003graphs}
+    which are defined as
+    arbitrary linear combinations
+    of matrices \( A \) (or its transpose \( A^\mathtt{T} \)),
+    \( E \) (identity matrix)
+    and \( J \) (the all-ones matrix).
+These matrices arise naturally
+    in some stochastic models.
+The spectral  properties of these matrices
+    often play a vital role in such models.
+For instance, the markovian random walk on a~graph
+    yields the notion of the eigenvector centrality
+    in a~network~\cite{bonacich1972factoring}.
+The transition matrix of such a random walk
+    is a generalized adjacency matrix of the network graph.
+The score of the vertex \( i \)
+    is defined as the \( i \)'th coordinate
+    of the dominating eigenvector
+    of the transition matrix.
+The largest eigenvalue of the row-stochastic matrix
+    is \( 1 \) and the dominating eigenvector
+    defines the stationary distribution
+    of the random walk.
+The PageRank~\cite{ilprints422} algorithm
+    originally used by Google
+    to compute the eigenvector centrality
+    relies on the Power-Method.
+The speed of its convergence
+    is determined by the ratio
+    of the absolute values of
+    the two largest eigenvalues
+    of the transition matrix.
+The stability of the stationary distribution
+    is determined~\cite{chakrabarti2008epidemic,wang2003epidemic} by a spectral gap
+    which is defined as the difference of
+    the two largest absolute eigenvalues.
+The method of estimation of almost-invariant sets proposed in~\cite{schwartz2006fluctuation}
+    relies as well on the spectral decomposition of such matrices.
+In the Susceptible-Infective-Susceptible model
+    a viral spread in a network
+    is modeled as a markov process
+    with \( 2^N \) states.
+The asymptotic (endemic or epidemic) behaviour of this system
+    is determined by the adjacency matrix spectral radius
+    and the rates of curage and infection.
+For more details and comprehensive description
+    the graph spectra theory
+    refer to~\cite{cvetkovic1980spectra,godsil2013algebraic}.
+
+\section{Methods and materials\todo{Shall we really put it as a separate odd-named section?}}
+
+We use the abstract method of similar operators
+    to derive estimates of eigenvalues and eigenvectors
+    of certain types of such matrices.
+First state the required notation and theorems
+    in a simplified form that accounts for finite-dimensionality
+    of the problem.
+
+Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
+    be a field of either real or complex numbers.
+We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
+    to be supplied with euclidian structure:
+    \[
+        (x, y){=}\sum_k x_k\overline{y_k},
+        \ x{=}(x_1,\ldots, x_n),
+        \ y=(y_1,\ldots, y_n)
+        \in \mathbb{K}^n
+        \]
+    and the norm defined by formula
+    \(
+        \|x\|_2^2{=}(x,x).
+        \)
+The space of matrices of the size \( m{\times}n \)
+    with the entries in the field \( \mathbb{K} \)
+    will be denoted by \( \mathbb{K}^{m{\times}n} \).
+If \( V_1, V_2 \) are normed vector spaces,
+    then the space of bounded linear mappings
+    from \( V_1 \) to \( V_2 \)
+    will be denoted by \( L(V_1, V_2) \).
+The algebra of bounded linear endomorphisms
+    from a banach space \( V \)
+    into itself
+    is denoted by \( L(V) = L(V, V) \).
+It is a banach algebra with the operator norm:
+    \[
+        \|A\|_{\mathrm{op}} =
+        \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ A\in L(V).
+        \]
+Specifically, aside from \( L(\mathbb{K}^n) \)
+    we will consider its isomorphic
+    space \( \mathbb{K}^{n{\times}n} \)
+    of \( (n{\times}n) \)-sized matrices
+    supplied with one of the following norms:
+    \( \|A\|_{\mathrm{op}} = \sup_{\|x\|=1,\ x\in \mathbb{K}^n} \|A x\|_2,\ \)
+    \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
+    for a matrix 
+    \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
+We will follow {Krein MG\todo{cite smth}}
+    and refer to elements of the space \( L(L(V)) \)
+    of linear mappings of operators
+    as "transformators".
+\section*{References}
+\bibliographystyle{iopart-num}
+\bibliography{sergey_kozlukov_jpcs}{}
+\end{document}
