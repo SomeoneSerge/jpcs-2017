@@ -21,7 +21,7 @@
         of a certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
     Specifically, we consider matrices
         obtained as combinations
-        of kronecker products~\cite{bellman-matrices-kron}
+        of kronecker products~\cite{bellman-matrices-kron,XIANG2005210}
         and small-norm perturbations.
     The estimates of the spectrum and the eigenvectors
         of such matrices are given.
@@ -581,6 +581,32 @@ The eigenvectors
 \]
 for all \( j{=}\overline{1,m}, k{=}\overline{1,n-1} \).
 \/}
+
+\subsection*{Kronecker products}
+
+Now we consider Kronecker products
+\[
+    A\otimes B =
+    \begin{pmatrix}
+        a_{11} B & \cdots & a_{1n} B \\
+        \vdots   & \ddots & \vdots \\
+        a_{n1} B & \cdots & a_{nn}
+    \end{pmatrix}
+    \in \mathbb{K}^{{mn}{\times}{mn}}
+\]
+of squared matrices
+\( A={(a_{ij})}\in\mathbb{K}^{n{\times}n},
+ \ B={(b_{ij})}\in\mathbb{K}^{m{\times}m} \)
+and small-norm perturbations
+\[
+    A\otimes B - F.
+\]
+
+We will also address special
+    perturbations of the following form (cf.~\cite{XIANG2005210}):
+\[
+    (A-\Delta A)\otimes (B - \Delta B).
+\]
 
 \section*{References}
 \bibliographystyle{iopart-num}
