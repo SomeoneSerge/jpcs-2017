@@ -42,8 +42,8 @@ One can also consider generalized
     which are defined as
     arbitrary linear combinations
     of matrices \( A \) (or its transpose \( A^\mathtt{T} \)),
-    \( E \) (an identity matrix)
-    and \( J \) (an all-ones matrix).
+    \( E \) (the identity matrix)
+    and \( J_N \) (the all-ones matrix).
 These matrices arise naturally
     in some stochastic models.
 Spectral  properties of these matrices
@@ -104,9 +104,9 @@ Here we will only state the required notation and theorems
 Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
     be a field of either real or complex numbers.
 We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
-    to be supplied with euclidian structure:
+    to be supplied with Euclidean structure:
     \[
-        (x, y){=}\sum_k x_k\overline{y_k},
+        (x, y){=}\sum_{k=1}^n x_k\overline{y_k},
         \ x{=}(x_1,\ldots, x_n),
         \ y=(y_1,\ldots, y_n)
         \in \mathbb{K}^n
@@ -115,6 +115,10 @@ We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
     \(
         \|x\|_2^2{=}(x,x).
         \)
+We also consider a canonical basis \( e_1, \ldots, e_n \)
+    in \( \mathbb{K}^n \) given by
+    \( (e_i)_j = \delta_{ij},\ i,j=\overline{1,n} \)
+    (\(\delta_{ij} \) is the Kronecker symbol).
 When \( V_1, V_2 \) are normed vector spaces
     we denote by \( L(V_1, V_2) \)
     the space of bounded linear mappings
@@ -171,7 +175,7 @@ For our specific purposes it suffices to say
     \item \( J, \Gamma \in L(\mathbb{K}^{n{\times}n}) \)
         are transformers;
     \item \( J \) is a projection (\( J^2 = J \));
-    \item  \( \Gamma \) is defined by equations:
+    \item  \( \Gamma \) satisfies the equations:
         \[
             A \Gamma X - (\Gamma X) A = X - JX,
         \]
@@ -180,8 +184,8 @@ For our specific purposes it suffices to say
         \]
 \end{itemize}
 
-Then the main theorem of the method
-    may be formulated as follows:
+The main theorem of the method
+    may be then formulated as follows:
 
 \textbf{Theorem.}
 {\it
@@ -203,18 +207,155 @@ Then the main theorem of the method
             \|X^o - B\| \leq 3 \left\|B\right\|,
         \]
         \[
-            \operatorname{spr}(X^o) \leq \|X^o\| \leq 4 \left\|B\right\|.
+            \operatorname{spr}(X^o) \leq \|X^o\| \leq 4 \left\|B\right\|,
         \]
+        where \( \operatorname{spr}(X^o) \)
+        is the spectral radius of \( X^o \) (the largest absolute eigenvalue).
     Such \( X^o \) can be found as the limit of a convergent sequence
-        \( \{ \Phi^k(0);\ k\in\mathbb{N} \} \)
-        in a Banach algebra \( \mathbb{K}^{n{\times}n} \),
-        where \( \Phi \) is a nonlinear mapping given by
+        \( \left( \Phi^k(0);\ k\in\mathbb{N} \right) \)
+        in a Banach algebra \( \mathbb{K}^{n{\times}n} \).
+        Here \( \Phi \) is a nonlinear mapping given by
     \[
         \Phi(X) = B\Gamma X - (\Gamma X)J(B + B\Gamma X) + B
     \]
         and \( \Phi^k = \underbrace{\Phi\circ\cdots\circ\Phi}_{k\ \text{copies}} \)
         denotes composition.
 }
+
+\section{Results and discussion}
+
+\subsection*{Almost-complete graph example.}
+
+Consider a digraph defined by the following adjacency matrix:
+\[
+    A = J_N - B = \begin{pmatrix}1 & \cdots & 1 \\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1\end{pmatrix} - B,
+\]
+
+Here \( J_N \) is the all-ones matrix.
+The unity on the intersection
+of \( i \)'th row and \( j \)'th column of \( B \)
+corresponds to an edge from \( i \) to \( j \)
+being absent in the graph.
+
+One can easily find the minimal annihilating polynomial of \( J_N \)
+    to be \( \lambda(\lambda - N) \).
+This comes from the fact that \( J_N^2 = N J_N \).
+Consequently the spectrum of \( J_N \) is
+\[
+    \sigma(J_N) = \left\{0, N\right\}.
+\]
+The only non-zero eigenvalue \( N \) has a corresponding eigenvector
+\[
+    h_N = \frac{1}{\sqrt{N}} \left(1, \ldots, 1\right)\in\mathbb{R}^N.
+\]
+The null-space of \( J_N \) is orthogonal to \( h_N \)
+    and has an orthonormal basis of vectors:
+\[
+    h_k = \frac{1}{\sqrt{k(k+1)}} \left(\underbrace{1, \ldots, 1}_{k\ \text{copies}}, -k, 0, \ldots, 0\right),\ k=\overline{1, N-1}.
+\]
+
+We conclude that the adjacency matrix \( A = J_N - B \) of this graph
+    is similar to a matrix \( \mathcal{A} - \mathcal{B} \)
+    where \( A \) is a block matrix (in what follows throughout this subsection block sizes are the same and will be omitted):
+    \[
+        \mathcal{A} = \left(\begin{array}{c|c}
+        N & \mathbf{0}_{1{\times}(N{-}1)} \\ \hline
+            \mathbf{0}_{(N{-}1){\times}1} & \mathbf{0}_{(N{-}1){\times}(N{-}1)}
+        \end{array}\right) \in \mathbb{R}^{N{\times}N}
+    \]
+    and \( \mathcal{B} \) is obtained with a similarity transform:
+    \[
+        \mathcal{B} = U^{-1} B U \in \mathbb{R}^{N{\times}N}.
+    \]
+The similarity matrix \( U \) is given by stacking column-eigenvectors:
+    \[
+        U = \operatorname{columns}(h_N, h_1, \ldots, h_{N-1}).
+    \]
+
+Following the general method, we shall construct an admissible triple.
+Since \( \mathcal{A} \) is block-diagonal
+    it is natural to set \( J \) with the following formula:
+    \[
+        JX =
+        \left(\begin{array}{c|c}
+            x_{11} & \mathbf{0} \\ \hline
+            \mathbf{0} & X_{22}
+        \end{array}\right)
+    \]
+    for all block matrices
+    \[
+        X =
+        \left(\begin{array}{c|c}
+            x_{11} & X_{12} \\ \hline
+            X_{21} & X_{22}
+        \end{array}\right)\in\mathbb{K}^{N{\times}N}.
+    \]
+Then \( A - JX \) is block-diagonal for any \( X \)
+    and its spectrum is the union
+    of its diagonal blocks' spectra:
+    \( \sigma(A - JX) = \{N, \sigma(-X_{22}) \} \).
+
+Now we are able to find the corresponding transformer \( \Gamma \).
+Suppose it is defined by a formula
+    \[ \Gamma X = \begin{pmatrix}
+        \Gamma_{11}(X) & \Gamma_{12}(X) \\
+        \Gamma_{21}(X) & \Gamma_{22}(X)
+        \end{pmatrix}.
+    \]
+Then the equations
+    \[
+        \mathcal{A} \Gamma X - (\Gamma X)\mathcal{A} =
+        N
+        \begin{pmatrix}
+          0 & \Gamma_{12}(X) \\
+          -\Gamma_{21}(X) & 0
+        \end{pmatrix} = X - JX,
+     \]
+and \( J\Gamma X = 0 \) yield the result
+    \[
+        \Gamma X = \frac{1}{N} \begin{pmatrix} 0 & X_{12} \\ -X_{21} & 0 \end{pmatrix},\ X\in\mathbb{K}^{N{\times}N}.
+    \]
+
+The last step is to estimate the norms and apply the theorem.
+One can verify that \( \|\Gamma\|_{\mathrm{op}} = \frac1N \).
+It is also apparent that \( \|\mathcal{B}\|_{\mathrm{op}} = \|B\|_{\mathrm{op}} \leq \|B\|_{mathrm{F}} \)
+    since multiplication by orthogonal matrix\( U \) is an isometry in Euclidean space.
+The Frobenius norm \( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_ij^2} = M} \)
+    of \( B \)
+    reduces to the square root of the number of absent edges.
+A direct implication is the following
+
+\textbf{Theorem.}
+{\it
+    Suppose the number of absent edges is
+    \[ M < \frac{1}{16} N^2. \]
+    Then the spectrum of the adjacency matrix \( A = J_N - B \)
+        can be represented as disjoint union
+    \[
+        \sigma(A) = \{ N - x_{11}^o \} \cup \sigma_2.
+    \]
+    The dominating eigenvector of \( A \) is
+    \[
+        \hat{h}_N = U(E+\Gamma X^o) e_1 =
+            h_N - \frac1N (X_{21,(1)}^o h_1 + \cdots + X_{21, (N{-}1)}^o h_{N{-}1}),
+    \]
+    where \( X_{21,(i)}^o,\ i=\overline{1,N{-}1} \) are the coordinates
+    of the vector \( X_{21}^o \).
+    Moreover \( \hat{h}_N\in\mathbb{R}^{N} \),
+    \( x_{11}^o\in\mathbb{R} \) and \( \sigma_2\subset\mathbb{C} \)
+    satisfy the following bounds:
+    \[
+        \|\hat{h}_N - h_N\|_2 \leq 4\frac{\sqrt{M}}{N},
+    \]
+    \[
+        \lvert x_{11}^o \rvert \leq 4\sqrt{M},
+    \]
+    \[
+        \sup_{\lambda\in\sigma_2} \lvert\lambda\rvert \leq 4\sqrt{M}.
+    \]
+}
+
+\subsection*{A-tiled matrix example.}
 
 \section*{References}
 \bibliographystyle{iopart-num}
