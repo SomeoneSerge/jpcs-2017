@@ -42,61 +42,64 @@ One can also consider generalized
     which are defined as
     arbitrary linear combinations
     of matrices \( A \) (or its transpose \( A^\mathtt{T} \)),
-    \( E \) (identity matrix)
-    and \( J \) (the all-ones matrix).
+    \( E \) (an identity matrix)
+    and \( J \) (an all-ones matrix).
 These matrices arise naturally
     in some stochastic models.
-The spectral  properties of these matrices
+Spectral  properties of these matrices
     often play a vital role in such models.
 For instance, the markovian random walk on a~graph
-    yields the notion of the eigenvector centrality
+    yields the notion of eigenvector centrality
     in a~network~\cite{bonacich1972factoring}.
 The transition matrix of such a random walk
-    is a generalized adjacency matrix of the network graph.
+    is generalized adjacency matrix of a graph.
 The score of the vertex \( i \)
     is defined as the \( i \)'th coordinate
-    of the dominating eigenvector
+    of the dominating left eigenvector
     of the transition matrix.
-The largest eigenvalue of the row-stochastic matrix
-    is \( 1 \) and the dominating eigenvector
-    defines the stationary distribution
-    of the random walk.
+The largest left eigenvalue of an irreducible column-stochastic matrix
+    is \( 1 \) and the dominating left eigenvector
+    defines the only stationary distribution
+    of a random walk.
 The PageRank~\cite{ilprints422} algorithm
     originally used by Google
     to compute the eigenvector centrality
     relies on the Power-Method.
-The speed of its convergence
-    is determined by the ratio
-    of the absolute values of
+Its speed of convergence depends on
+    the ratio of the two largest absolute eigenvalues.
+Stability of the stationary distribution
+    is determined~\cite{meyer1994sensitivity}
+    by the condition number
+    which is bounded from below
+    by a spectral gap --- the distance between
     the two largest eigenvalues
     of the transition matrix.
-The stability of the stationary distribution
-    is determined~\cite{chakrabarti2008epidemic,wang2003epidemic} by a spectral gap
-    which is defined as the difference of
-    the two largest absolute eigenvalues.
-The method of estimation of almost-invariant sets proposed in~\cite{schwartz2006fluctuation}
-    relies as well on the spectral decomposition of such matrices.
+The method of estimation of almost-invariant sets
+    proposed in~\cite{schwartz2006fluctuation}
+    relies as well on spectral decompositions of such matrices.
 In the Susceptible-Infective-Susceptible model
     a viral spread in a network
     is modeled as a markov process
     with \( 2^N \) states.
-The asymptotic (endemic or epidemic) behaviour of this system
-    is determined by the adjacency matrix spectral radius
+An asymptotic (endemic or epidemic) behaviour of this system
+    is determined by the spectral radius (the absolute largest eigenvalue)
+    of the adjacency matrix
     and the rates of curage and infection.
 For more details and comprehensive description
-    the graph spectra theory
+    of the graph spectra theory
     refer to~\cite{cvetkovic1980spectra,godsil2013algebraic}.
 
-\section{Methods and materials\todo{Shall we really put it as a separate odd-named section?}}
+\section{Methods and materials}
 
 We use the abstract method of similar operators
     to derive estimates of eigenvalues and eigenvectors
     of certain types of such matrices.
-First we state the required notation and theorems
+This method originates from Friedrichs~\cite{friedrichs1965advanced}
+    and was later developed in abstract setting
+    by Baskakov~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}.
+Here we will only state the required notation and theorems
     in a simplified form that accounts for finite-dimensionality
     of the problem.
-For a more in-depth introduction to the method
-    refer to~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}.
 
 Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
     be a field of either real or complex numbers.
@@ -128,7 +131,7 @@ It is a Banach algebra with the operator norm:
 Together with \( L(\mathbb{K}^n, \mathbb{K}^m) \)
     we consider its isomorphic space \( \mathbb{K}^{m{\times}n} \)
     of matrices of the size \( m{\times}n \)
-    with the entries from the field \( \mathbb{K} \).
+    with entries from the field \( \mathbb{K} \).
 The space \( \mathbb{K}^{n{\times}n}\sim L(\mathbb{K}^n) \)
     forms a Banach algebra
     when supplied with one of the following norms:
@@ -136,7 +139,7 @@ The space \( \mathbb{K}^{n{\times}n}\sim L(\mathbb{K}^n) \)
     \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
     for a matrix 
     \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
-Finally we are going to need isomorphic spaces
+Finally we are going to use the isomorphic spaces
     \( L(L(\mathbb{K}^n)) \) and \( L(\mathbb{K}^{n{\times}n}) \)
     with the operator norm.
 We will follow {Krein MG\todo{cite smth}}
@@ -154,6 +157,64 @@ Similar matrices share some spectral properties:
     they are isospectral (\( \sigma(A_1) = \sigma(A_2) \))
     and \( U \) maps eigenvectors of one to another's:
     \( A_2 x = \lambda x \implies A_1 U x = \lambda U x \).
+
+The most important notion
+    of the abstract method of similar operators
+    is that of an \emph{admissible triple}.
+For our specific purposes it suffices to say
+    that \( (\mathbb{K}^n, J, \Gamma) \)
+    forms an \emph{admissible triple}
+    for a matrix \( A\in\mathbb{K}^{n{\times}n} \)
+    if the following conditions are met:
+\begin{itemize}
+    \item \( J, \Gamma \in L(\mathbb{K}^{n{\times}n}) \)
+        are transformers;
+    \item \( J \) is a projection (\( J^2 = J \));
+    \item  \( \Gamma \) is defined by equations:
+        \[
+            A \Gamma X - (\Gamma X) A = X - JX,
+        \]
+        \[
+            J\Gamma X = 0,\ X\in\mathbb{K}^{n{\times}n}.
+        \]
+\end{itemize}
+
+Then the main theorem of the method
+    may be formulated as follows:
+
+\textbf{Theorem.}
+{\it
+    Consider a matrix \( A - B \)
+        where \( A, B \in \mathbb{K}^{n{\times}n} \).
+    Suppose \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
+        is an admissible triple for a matrix \( A \)
+        and the following inequality holds:
+        \[
+            \|B\|_{\mathrm{op}}\|\Gamma\|_{\mathrm{op}} \leq \frac14.
+        \]
+
+    Then there exists such a matrix \( X^o\in\mathbb{K}^{n{\times}n} \)
+        that
+        \( A - B \) is similar to a matrix \( A - J X^o \);
+        the similarity matrix is \( E + \Gamma X^o \);
+        the following estimates are valid:
+        \[
+            \|X^o - B\|_{\mathrm{op}}\leq 3\|B\|_{\mathrm{op}},
+        \]
+        \[
+            \operatorname{spr}(X^o) \leq \|X^o\|_{\mathrm{op}}\leq 4\|B\|_{\mathrm{op}}.
+        \]
+    Such \( X^o \) can be found as the limit of a convergent sequence
+        \( \{ \Phi^k(0);\ k\in\mathbb{N} \} \)
+        in a Banach algebra \( \mathbb{K}^{n{\times}n} \),
+        where
+    \[
+        \Phi(X) = B\Gamma X - (\Gamma X)J(B + B\Gamma X) + B
+    \]
+        and \( \Phi^k = \underbrace{\Phi\circ\cdots\circ\Phi}_{k\ \text{copies}} \)
+        denotes composition.
+}
+
 \section*{References}
 \bibliographystyle{iopart-num}
 \bibliography{sergey_kozlukov_jpcs}{}
