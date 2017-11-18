@@ -131,18 +131,19 @@ It is a Banach algebra with the operator norm:
 Together with \( L(\mathbb{K}^n, \mathbb{K}^m) \)
     we consider its isomorphic space \( \mathbb{K}^{m{\times}n} \)
     of matrices of the size \( m{\times}n \)
-    with entries from the field \( \mathbb{K} \).
+    with entries from a field \( \mathbb{K} \).
 The space \( \mathbb{K}^{n{\times}n}\sim L(\mathbb{K}^n) \)
     forms a Banach algebra
-    when supplied with one of the following norms:
-    \( \|A\|_{\mathrm{op}} = \sup_{\|x\|_2=1,\ x\in \mathbb{K}^n} \|A x\|_2,\ \)
+    when supplied with a submultiplicative norm
+    \( \|\cdot\| \),
+    e.g.: \( \|A\|_{\mathrm{op}} = \sup_{\|x\|_2=1,\ x\in \mathbb{K}^n} \|A x\|_2,\ \)
     \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
     for a matrix 
     \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
 Finally we are going to use the isomorphic spaces
     \( L(L(\mathbb{K}^n)) \) and \( L(\mathbb{K}^{n{\times}n}) \)
     with the operator norm.
-We will follow {Krein MG\todo{cite smth}}
+We will follow {Krein \todo{cite smth}}
     and refer to elements of \( L(\mathbb{K}^{n{\times}n}) \)
     as ``transformers''.
 
@@ -185,12 +186,12 @@ Then the main theorem of the method
 \textbf{Theorem.}
 {\it
     Consider a matrix \( A - B \)
-        where \( A, B \in \mathbb{K}^{n{\times}n} \).
+        with \( A, B \in \mathbb{K}^{n{\times}n} \).
     Suppose \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
         is an admissible triple for a matrix \( A \)
         and the following inequality holds:
         \[
-            \|B\|_{\mathrm{op}}\|\Gamma\|_{\mathrm{op}} \leq \frac14.
+            \|B\|\|\Gamma\|_{\mathrm{op}} \leq \frac14.
         \]
 
     Then there exists such a matrix \( X^o\in\mathbb{K}^{n{\times}n} \)
@@ -199,15 +200,15 @@ Then the main theorem of the method
         the similarity matrix is \( E + \Gamma X^o \);
         the following estimates are valid:
         \[
-            \|X^o - B\|_{\mathrm{op}}\leq 3\|B\|_{\mathrm{op}},
+            \|X^o - B\| \leq 3 \left\|B\right\|,
         \]
         \[
-            \operatorname{spr}(X^o) \leq \|X^o\|_{\mathrm{op}}\leq 4\|B\|_{\mathrm{op}}.
+            \operatorname{spr}(X^o) \leq \|X^o\| \leq 4 \left\|B\right\|.
         \]
     Such \( X^o \) can be found as the limit of a convergent sequence
         \( \{ \Phi^k(0);\ k\in\mathbb{N} \} \)
         in a Banach algebra \( \mathbb{K}^{n{\times}n} \),
-        where
+        where \( \Phi \) is a nonlinear mapping given by
     \[
         \Phi(X) = B\Gamma X - (\Gamma X)J(B + B\Gamma X) + B
     \]
