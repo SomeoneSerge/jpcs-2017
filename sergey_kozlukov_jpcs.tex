@@ -117,7 +117,7 @@ We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
         \)
 We also consider a canonical basis \( e_1, \ldots, e_n \)
     in \( \mathbb{K}^n \) given by
-    \( (e_i)_j = \delta_{ij},\ i,j=\overline{1,n} \)
+    \( {(e_i)}_j = \delta_{ij},\ i,j=\overline{1,n} \)
     (\(\delta_{ij} \) is the Kronecker symbol).
 When \( V_1, V_2 \) are normed vector spaces
     we denote by \( L(V_1, V_2) \)
@@ -356,6 +356,231 @@ A direct implication is the following
 }
 
 \subsection*{A-tiled matrix example.}
+
+Now let \( A\in\mathbb{K}^{m{\times}m} \)
+    and consider the following (``A-tiled'') block-matrix
+    \[
+        \mathbb{A} =
+        \begin{pmatrix}
+            A & \cdots & A \\
+            \vdots & \ddots & \vdots \\
+            A & \cdots & A
+        \end{pmatrix}
+        \in\mathbb{K}^{{mn}{\times}{mn}}
+    \]
+    and a perturbed matrix
+    \[
+        \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{mn}{\times}{mn}}.
+    \]
+
+\textbf{Lemma.}
+{\it
+    Suppose \( A \) is an invertible self-adjoint matrix.
+    Then it has \( m \) orthonormal eigenvectors \( h_1, \ldots, h_m \)
+    (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,m}\))
+    with the corresponding eigenvalues
+    \( \lambda_1, \ldots, \lambda_m \neq 0\).
+    The spectrum of \( \mathbb{A} \) is
+    \[
+        \sigma(\mathbb{A}) = \{0\}\cup n\sigma(A) = \{0\} \cup \{n\lambda;\ \lambda\in\sigma(A) \}.
+    \]
+    Non-zero eigenvalues of \( \mathbb{A} \)
+        have corresponding block eigenvectors:
+    \[
+        f_j = \frac{1}{\sqrt{n}} (h_j, \ldots, h_j)\in \mathbb{K}^{mn},\ j=\overline{1,m}.
+    \]
+    The null-space of \( \mathbb{A} \)
+        is formed by the following orthonormal system of vectors:
+    \[
+        f_{j,k} = \frac{1}{\sqrt{k(k+1)}}
+        (
+        \underbrace{e_j, \ldots, e_j}_{k\ \text{copies}},
+        -ke_j,
+        0, \ldots, 0
+        ) \in\mathbb{K}^{{mn}{\times}{mn}}
+    \]
+
+    The matrix \( \mathbb{A} \) is similar to a block-diagonal matrix
+    \[
+        \mathcal{A} =
+        \left(\begin{array}{c|c}
+            \operatorname{diag}(n\lambda_1,\ldots,n\lambda_m) & \mathbf{0} \\ \hline
+            \mathbf{0} & \mathbf{0}
+        \end{array}\right)\in\mathbb{K}^{{mn}{\times}{mn}}.
+    \]
+    The similarity transform matrix is
+    \[
+        U = \operatorname{columns}
+        \left(f_1, \ldots, f_m, f_{1,1}, \ldots, f_{1,n{-1}}, \ldots, f_{m,n{-}1}\right).
+    \]
+\/
+}
+
+Throughout this subsection
+    we will consider block matrices
+    of the size \( {mn}{\times}{mn} \)
+    in the form
+    \[
+    X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                x_{11} & \cdots & x_{1m} \\
+                \vdots & \ddots & \vdots \\
+                x_{m1} & \cdots & x_{mm}
+            \end{matrix} &
+            \begin{matrix}
+                x_{1,m+1} \\
+                \vdots \\
+                x_{m,m+1}
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                x_{m+1,1} &
+                \cdots &
+                x_{m+1,m}
+            \end{matrix} &
+            X_{m+1,m+1}
+        \end{array}\right),
+    \]
+where
+\( X_{ij}      {=} x_{ij},
+ \ X_{m{+}1,j} {=} x_{m{+}1,j},
+ \ X_{i,m{+}1} {=} x_{i,m{+}1} \in \mathbb{K} \)
+for \( 1 \leq {i,j} \leq m \),
+and
+\( X_{m{+}1,m{+}1} \) is a block of the size \( {m(n{-}1){\times}m(n-1)} \).
+
+Just like before we are going to investigate
+    the spectral behaviour of \( \mathbb{A} \) under perturbations.
+We begin with constructing an admissible triple.
+A natural choice for \( J \) in this case is
+\[
+        J X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                x_{11} &  & 0 \\
+                 & \ddots &  \\
+                0 &  & x_{mm}
+            \end{matrix} &
+            \begin{matrix}
+                0 \\
+                \vdots \\
+                0
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                0 & \cdots & 0
+            \end{matrix} &
+            X_{m+1,m+1}
+        \end{array}\right).
+\]
+
+\textbf{Lemma.}
+{\it
+Suppose \( A \) has a simple spectrum,
+    i.e.\ its eigenvalues are pairwise distinct:
+    \( \lambda_i\neq\lambda_j \) for all \( 1\leq i{\neq}j \leq m \).
+
+    Then a tuple \( (\mathbb{K}^{{mn}{\times}{mn}}, J, \Gamma) \)
+        forms an admissible triple if we define
+    \[
+        \Gamma X = 
+            \frac1n \left(\begin{array}{c|c}
+            \begin{matrix}
+                0               & \gamma_{12}x_{12} & \cdots & \gamma_{1m}x_{1m} \\
+                \gamma_{21}x_{21}  & 0              & \cdots & \gamma_{2m}x_{2m} \\
+                \vdots          & \vdots         & \ddots & \vdots & \ \\
+                \gamma_{m1}x_{m1}  & \gamma_{m2}x_{m2} & \cdots & 0
+            \end{matrix} &
+            \begin{matrix}
+                \gamma_{1,m+1}x_{1,m+1} \\
+                \gamma_{2,m+1}x_{2,m+1} \\
+                \vdots \\
+                \gamma_{m,m+1}x_{m,m+1}
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                \gamma_{m{+}1,1}x_{m{+}1,1} &
+                \gamma_{m{+}1,2}x_{m{+}1,2} &
+                \cdots &
+                \gamma_{m{+}1,m}x_{m{+}1,m}
+            \end{matrix} &
+            \mathbf{0}
+        \end{array}\right),
+    \]
+    \[
+        \gamma_{ij} = \left\{
+            \begin{aligned}
+                & \frac{1}{\lambda_i - \lambda_j},\ 1\leq i{\neq}j \leq m{+}1,\\
+                & 0,\ i=j
+            \end{aligned}
+            \right.
+    \]
+    and we use the convention:
+    \[
+        \lambda_{m{+}1} = 0.
+    \]
+
+    The operator norm of \( \Gamma \) is:
+    \[
+        \|\Gamma\|_{\mathrm{op}} =
+        \frac1n
+        \frac{1}{\min_{1\leq i{\neq}j \leq m{+}1}|\lambda_i - \lambda_j|} =
+        \]
+    \[
+        = \frac1n
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
+         \frac{1}{
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+         \right\}
+        \]
+\/}
+
+\textbf{Theorem.}
+{\it
+Suppose \( A \) has simple spectrum and
+\[
+    \left\| \mathbb{B} \right\|_{\mathrm{op}}
+        \leq 
+        \frac{n}{4}
+         \min\left\{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|},
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}
+         \right\}.
+ \]
+
+Then the spectrum of disturbed matrix \( \mathbb{A} - \mathbb{B} \) is
+\[
+    \sigma\left(\mathbb{A}\right) =
+        \left\{
+            n\lambda_1 - x_{11}^o, \ldots, n\lambda_m - x_{mm}^o
+        \right\}
+    \cup \sigma_{m{+}1}.
+\]
+
+The eigenvectors
+    \( \hat{f}_j,\ \hat{f}_{j,k},\ j{=}\overline{1,m},\ k{=}\overline{1,n{-1}} \)
+    of the matrix \( \mathbb{A}{-}\mathbb{B} \),
+    the values \( x_{jj}^o,\ j{=}\overline{1,m} \)
+    and the set \( \sigma_{m{+}1} \) have the following bounds:
+\[
+    \lvert x_{jj}^o\rvert,
+    \ \max_{\lambda\in\sigma_{m{+}1}} \lvert\lambda\rvert
+    \leq 4\|B\|,
+\]
+\[
+    \left\| \hat{f}_j - f_j \right\|_2,
+    \ \left\| \hat{f}_{j,k} - f_{j,k}\right\|_2
+    \leq
+    \frac4n \|B\|
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq l{\neq}p \leq m }{|\lambda_l - \lambda_p|}},
+         \frac{1}{
+             \min\limits_{1\leq l \leq m}{|\lambda_l|}}
+         \right\}
+\]
+for all \( j{=}\overline{1,m}, k{=}\overline{1,n-1} \).
+\/}
 
 \section*{References}
 \bibliographystyle{iopart-num}
