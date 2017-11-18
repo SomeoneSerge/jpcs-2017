@@ -82,7 +82,7 @@ In the Susceptible-Infective-Susceptible model
     is modeled as a markov process
     with \( 2^N \) states.
 An asymptotic (endemic or epidemic) behaviour of this system
-    is determined by the spectral radius (the absolute largest eigenvalue)
+    is determined by a spectral radius (the largest absolute eigenvalue)
     of the adjacency matrix
     and the rates of curage and infection.
 For more details and comprehensive description
@@ -343,15 +343,13 @@ A direct implication is the following
     of the vector \( X_{21}^o \).
     Moreover \( \hat{h}_N\in\mathbb{R}^{N} \),
     \( x_{11}^o\in\mathbb{R} \) and \( \sigma_2\subset\mathbb{C} \)
-    satisfy the following bounds:
+    satisfy the following inequalities:
     \[
         \|\hat{h}_N - h_N\|_2 \leq 4\frac{\sqrt{M}}{N},
     \]
     \[
-        \lvert x_{11}^o \rvert \leq 4\sqrt{M},
-    \]
-    \[
-        \sup_{\lambda\in\sigma_2} \lvert\lambda\rvert \leq 4\sqrt{M}.
+        \lvert x_{11}^o \rvert,
+        \ \sup_{\lambda\in\sigma_2} \lvert\lambda\rvert \leq 4\sqrt{M}.
     \]
 }
 
@@ -537,7 +535,7 @@ Suppose \( A \) has a simple spectrum,
 
 \textbf{Theorem.}
 {\it
-Suppose \( A \) has simple spectrum and
+Suppose \( A \) has simple spectrum and the following inequality holds:
 \[
     \left\| \mathbb{B} \right\|_{\mathrm{op}}
         \leq 
@@ -590,7 +588,7 @@ Now we consider Kronecker products
     \begin{pmatrix}
         a_{11} B & \cdots & a_{1n} B \\
         \vdots   & \ddots & \vdots \\
-        a_{n1} B & \cdots & a_{nn}
+        a_{n1} B & \cdots & a_{nn} B
     \end{pmatrix}
     \in \mathbb{K}^{{mn}{\times}{mn}}
 \]
@@ -619,6 +617,15 @@ Note that a "tiled" matrix from the last example
         J_N\otimes A.
     \]
 
+TODO
+
+\section*{Conclusion}
+\todo{wtf am I supposed to say here?}
+The method of similar operators
+    is a powerful tool in perturbation analysis.
+Developed in context of Banach spaces
+    it is just as well applicable
+    in finite-dimensional problems.
 \section*{References}
 \bibliographystyle{iopart-num}
 \bibliography{sergey_kozlukov_jpcs}{}
