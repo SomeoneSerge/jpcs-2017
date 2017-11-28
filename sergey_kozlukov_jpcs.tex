@@ -371,7 +371,7 @@ This directly implies the following
 
 \subsection*{A-tiled matrix example.}
 
-Now let \( A\in\mathbb{K}^{m{\times}m} \)
+Now let \( A\in\mathbb{K}^{M{\times}M} \)
     and consider the following (``A-tiled'') block-matrix
     \[
         \mathbb{A} =
@@ -380,29 +380,29 @@ Now let \( A\in\mathbb{K}^{m{\times}m} \)
             \vdots & \ddots & \vdots \\
             A & \cdots & A
         \end{pmatrix}
-        \in\mathbb{K}^{{mn}{\times}{mn}}
+        \in\mathbb{K}^{{MN}{\times}{MN}}
     \]
     and a perturbed matrix
     \[
-        \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{mn}{\times}{mn}}.
+        \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{MN}{\times}{MN}}.
     \]
 
 \begin{center}
 \textbf{Lemma.}
 {\it
     Suppose \( A \) is invertible self-adjoint matrix.
-    Then it has \( m \) orthonormal eigenvectors \( h_1, \ldots, h_m \)
-    (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,m}\))
+    Then it has \( M \) orthonormal eigenvectors \( h_1, \ldots, h_M \)
+    (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,M}\))
     with the corresponding eigenvalues
-    \( \lambda_1, \ldots, \lambda_m \neq 0\).
+    \( \lambda_1, \ldots, \lambda_M \neq 0\).
     The spectrum of \( \mathbb{A} \) is
     \[
-        \sigma(\mathbb{A}) = \{0\}\cup n\sigma(A) = \{0\} \cup \{n\lambda;\ \lambda\in\sigma(A) \}.
+        \sigma(\mathbb{A}) = \{0\}\cup N\sigma(A) = \{0\} \cup \{N\lambda;\ \lambda\in\sigma(A) \}.
     \]
     Non-zero eigenvalues of \( \mathbb{A} \)
         have corresponding block eigenvectors:
     \[
-        f_j = \frac{1}{\sqrt{n}} (h_j, \ldots, h_j)\in \mathbb{K}^{mn},\ j=\overline{1,m}.
+        f_j = \frac{1}{\sqrt{N}} (h_j, \ldots, h_j)\in \mathbb{K}^{MN},\ j=\overline{1,M}.
     \]
     The null-space of \( \mathbb{A} \)
         has an orthonormal basis:
@@ -412,21 +412,21 @@ Now let \( A\in\mathbb{K}^{m{\times}m} \)
         \underbrace{e_j, \ldots, e_j}_{k\ \text{copies}},
         -ke_j,
         0, \ldots, 0
-        ) \in\mathbb{K}^{{mn}{\times}{mn}}
+        ) \in\mathbb{K}^{{MN}{\times}{MN}}
     \]
 
     The matrix \( \mathbb{A} \) is similar to a block-diagonal matrix:
     \[
         \mathcal{A} =
         \left(\begin{array}{c|c}
-            \operatorname{diag}(n\lambda_1,\ldots,n\lambda_m) & \mathbf{0} \\ \hline
+            \operatorname{diag}(N\lambda_1,\ldots,N\lambda_M) & \mathbf{0} \\ \hline
             \mathbf{0} & \mathbf{0}
-        \end{array}\right)\in\mathbb{K}^{{mn}{\times}{mn}};
+        \end{array}\right)\in\mathbb{K}^{{MN}{\times}{MN}};
     \]
     the similarity transform matrix is
     \[
         U = \operatorname{columns}
-        \left(f_1, \ldots, f_m, f_{1,1}, \ldots, f_{1,n{-1}}, \ldots, f_{m,n{-}1}\right).
+        \left(f_1, \ldots, f_M, f_{1,1}, \ldots, f_{1,N{-1}}, \ldots, f_{M,N{-}1}\right).
     \]
 \/
 }
@@ -434,36 +434,36 @@ Now let \( A\in\mathbb{K}^{m{\times}m} \)
 
 Throughout this subsection
     we will consider block matrices
-    of the size \( {mn}{\times}{mn} \)
+    of the size \( {MN}{\times}{MN} \)
     in the form
     \[
     X =
         \left(\begin{array}{c|c}
             \begin{matrix}
-                x_{11} & \cdots & x_{1m} \\
+                x_{11} & \cdots & x_{1M} \\
                 \vdots & \ddots & \vdots \\
-                x_{m1} & \cdots & x_{mm}
+                x_{M1} & \cdots & x_{MM}
             \end{matrix} &
             \begin{matrix}
-                x_{1,m+1} \\
+                x_{1,M+1} \\
                 \vdots \\
-                x_{m,m+1}
+                x_{M,M+1}
             \end{matrix} \\ \hline
             \begin{matrix}
-                x_{m+1,1} &
+                x_{M+1,1} &
                 \cdots &
-                x_{m+1,m}
+                x_{M+1,M}
             \end{matrix} &
-            X_{m+1,m+1}
+            X_{M+1,M+1}
         \end{array}\right),
     \]
 where
 \( X_{ij}      {=} x_{ij},
- \ X_{m{+}1,j} {=} x_{m{+}1,j},
- \ X_{i,m{+}1} {=} x_{i,m{+}1} \in \mathbb{K} \)
-for \( 1 \leq {i,j} \leq m \),
+ \ X_{M{+}1,j} {=} x_{M{+}1,j},
+ \ X_{i,M{+}1} {=} x_{i,M{+}1} \in \mathbb{K} \)
+for \( 1 \leq {i,j} \leq M \),
 and
-\( X_{m{+}1,m{+}1} \) is a block of the size \( {m(n{-}1){\times}m(n-1)} \).
+\( X_{M{+}1,M{+}1} \) is a block of the size \( {M(N{-}1){\times}M(N-1)} \).
 
 Just like before we are going to investigate
     the spectral behaviour of \( \mathbb{A} \) under perturbations.
@@ -475,7 +475,7 @@ A natural choice for \( J \) in this case is
             \begin{matrix}
                 x_{11} &  & 0 \\
                  & \ddots &  \\
-                0 &  & x_{mm}
+                0 &  & x_{MM}
             \end{matrix} &
             \begin{matrix}
                 0 \\
@@ -485,7 +485,7 @@ A natural choice for \( J \) in this case is
             \begin{matrix}
                 0 & \cdots & 0
             \end{matrix} &
-            X_{m+1,m+1}
+            X_{M+1,M+1}
         \end{array}\right).
 \]
 
@@ -494,30 +494,30 @@ A natural choice for \( J \) in this case is
 {\it
 Suppose \( A \) has a simple spectrum,
     i.e.\ its eigenvalues are pairwise distinct:
-    \( \lambda_i\neq\lambda_j \) for all \( 1\leq i{\neq}j \leq m \).
+    \( \lambda_i\neq\lambda_j \) for all \( 1\leq i{\neq}j \leq M \).
 
-    Then a tuple \( (\mathbb{K}^{{mn}{\times}{mn}}, J, \Gamma) \)
+    Then a tuple \( (\mathbb{K}^{{MN}{\times}{MN}}, J, \Gamma) \)
         forms an admissible triple if we define
     \[
         \Gamma X = 
             \frac1n \left(\begin{array}{c|c}
             \begin{matrix}
-                0               & \gamma_{12}x_{12} & \cdots & \gamma_{1m}x_{1m} \\
-                \gamma_{21}x_{21}  & 0              & \cdots & \gamma_{2m}x_{2m} \\
+                0               & \gamma_{12}x_{12} & \cdots & \gamma_{1M}x_{1M} \\
+                \gamma_{21}x_{21}  & 0              & \cdots & \gamma_{2M}x_{2M} \\
                 \vdots          & \vdots         & \ddots & \vdots & \ \\
-                \gamma_{m1}x_{m1}  & \gamma_{m2}x_{m2} & \cdots & 0
+                \gamma_{M1}x_{M1}  & \gamma_{M2}x_{M2} & \cdots & 0
             \end{matrix} &
             \begin{matrix}
-                \gamma_{1,m+1}x_{1,m+1} \\
-                \gamma_{2,m+1}x_{2,m+1} \\
+                \gamma_{1,M+1}x_{1,M+1} \\
+                \gamma_{2,M+1}x_{2,M+1} \\
                 \vdots \\
-                \gamma_{m,m+1}x_{m,m+1}
+                \gamma_{M,M+1}x_{M,M+1}
             \end{matrix} \\ \hline
             \begin{matrix}
-                \gamma_{m{+}1,1}x_{m{+}1,1} &
-                \gamma_{m{+}1,2}x_{m{+}1,2} &
+                \gamma_{M{+}1,1}x_{M{+}1,1} &
+                \gamma_{M{+}1,2}x_{M{+}1,2} &
                 \cdots &
-                \gamma_{m{+}1,m}x_{m{+}1,m}
+                \gamma_{M{+}1,M}x_{M{+}1,M}
             \end{matrix} &
             \mathbf{0}
         \end{array}\right),
@@ -525,29 +525,29 @@ Suppose \( A \) has a simple spectrum,
     \[
         \gamma_{ij} = \left\{
             \begin{aligned}
-                & \frac{1}{\lambda_i - \lambda_j},\ 1\leq i{\neq}j \leq m{+}1,\\
+                & \frac{1}{\lambda_i - \lambda_j},\ 1\leq i{\neq}j \leq M{+}1,\\
                 & 0,\ i=j
             \end{aligned}
             \right.
     \]
     and we use the convention:
     \[
-        \lambda_{m{+}1} = 0.
+        \lambda_{M{+}1} = 0.
     \]
 
     The operator norm of \( \Gamma \) is:
     \[
         \|\Gamma\|_{\mathrm{op}} =
-        \frac1n
-        \frac{1}{\min_{1\leq i{\neq}j \leq m{+}1}|\lambda_i - \lambda_j|} =
+        \frac1N
+        \frac{1}{\min\limits_{1\leq i{\neq}j \leq M{+}1}|\lambda_i - \lambda_j|} =
         \]
     \[
-        = \frac1n
+        = \frac1N
          \max\left\{
          \frac{1}{
-             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
+             \min\limits_{1\leq i{\neq}j \leq M }{|\lambda_i - \lambda_j|}},
          \frac{1}{
-             \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+             \min\limits_{1\leq j \leq M}{|\lambda_j|}}
          \right\}
         \]
 \/}
@@ -560,10 +560,10 @@ Suppose \( A \) has simple spectrum and the following inequality holds:
 \[
     \left\| \mathbb{B} \right\|_{\mathrm{op}}
         \leq 
-        \frac{n}{4}
+        \frac{N}{4}
          \min\left\{
-             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|},
-             \min\limits_{1\leq j \leq m}{|\lambda_j|}
+             \min\limits_{1\leq i{\neq}j \leq M }{|\lambda_i - \lambda_j|},
+             \min\limits_{1\leq j \leq M}{|\lambda_j|}
          \right\}.
  \]
 
@@ -571,34 +571,34 @@ Then the spectrum of disturbed matrix \( \mathbb{A} - \mathbb{B} \) is
 \[
     \sigma\left(\mathbb{A}\right) =
         \left\{
-            n\lambda_1 - x_{11}^o, \ldots, n\lambda_m - x_{mm}^o
+            N\lambda_1 - x_{11}^o, \ldots, N\lambda_M - x_{MM}^o
         \right\}
-    \cup \sigma_{m{+}1}.
+    \cup \sigma_{M{+}1}.
 \]
 
 The eigenvectors
-    \( \hat{f}_j,\ \hat{f}_{j,k},\ j{=}\overline{1,m},\ k{=}\overline{1,n{-1}} \)
+    \( \hat{f}_j,\ \hat{f}_{j,k},\ j{=}\overline{1,M},\ k{=}\overline{1,N{-1}} \)
     of the matrix \( \mathbb{A}{-}\mathbb{B} \),
-    the values \( x_{jj}^o,\ j{=}\overline{1,m} \)
-    and the set \( \sigma_{m{+}1} \) are in the following bounds:
+    the values \( x_{jj}^o,\ j{=}\overline{1,M} \)
+    and the set \( \sigma_{M{+}1} \) are in the following bounds:
 \[
     \lvert x_{jj}^o\rvert,
-    \ \max_{\lambda\in\sigma_{m{+}1}} \lvert\lambda\rvert
+    \ \max_{\lambda\in\sigma_{M{+}1}} \lvert\lambda\rvert
     \leq 4\|B\|,
 \]
 \[
     \left\| \hat{f}_j - f_j \right\|_2,
     \ \left\| \hat{f}_{j,k} - f_{j,k}\right\|_2
     \leq
-    \frac4n \|B\|
+    \frac4N \|B\|
          \max\left\{
          \frac{1}{
-             \min\limits_{1\leq l{\neq}p \leq m }{|\lambda_l - \lambda_p|}},
+             \min\limits_{1\leq l{\neq}p \leq M }{|\lambda_l - \lambda_p|}},
          \frac{1}{
-             \min\limits_{1\leq l \leq m}{|\lambda_l|}}
+             \min\limits_{1\leq l \leq M}{|\lambda_l|}}
          \right\}
 \]
-for all \( j{=}\overline{1,m}, k{=}\overline{1,n-1} \).
+for all \( j{=}\overline{1,M}, k{=}\overline{1,N-1} \).
 \/}
 \end{center}
 
@@ -608,15 +608,15 @@ Now we consider Kronecker products
 \[
     A\otimes B =
     \begin{pmatrix}
-        a_{11} B & \cdots & a_{1n} B \\
+        a_{11} B & \cdots & a_{1N} B \\
         \vdots   & \ddots & \vdots \\
-        a_{n1} B & \cdots & a_{nn} B
+        a_{N1} B & \cdots & a_{NN} B
     \end{pmatrix}
-    \in \mathbb{K}^{{mn}{\times}{mn}}
+    \in \mathbb{K}^{{MN}{\times}{MN}}
 \]
 of squared matrices
-\( A={(a_{ij})}\in\mathbb{K}^{n{\times}n},
- \ B={(b_{ij})}\in\mathbb{K}^{m{\times}m} \)
+\( A={(a_{ij})}\in\mathbb{K}^{N{\times}N},
+ \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M} \)
 and small-norm perturbations
 \[
     A\otimes B - F.
@@ -644,13 +644,13 @@ Note that the ``tiled'' matrix from the last example
 \textbf{Lemma.}
 {\it
 Suppose \( A \) and \( B \) have simple structure,
-    i.e. \( A \) has \( n \) eigenvectors
-    \( f_1, \ldots, f_n \)
-    whose corresponding eigenvalues are \( \mu_1, \ldots, \mu_n \)
-    and \( B \) has eigenvectors \( h_1, \ldots, h_m \)
-    with the eigenvalues \( \lambda_1, \ldots, \lambda_m \).
+    i.e. \( A \) has \( N \) eigenvectors
+    \( f_1, \ldots, f_N \)
+    whose corresponding eigenvalues are \( \mu_1, \ldots, \mu_N \)
+    and \( B \) has eigenvectors \( h_1, \ldots, h_M \)
+    with the eigenvalues \( \lambda_1, \ldots, \lambda_M \).
 Then \( A\otimes B \) also has simple structure;
-    it has \( mn \) independent eigenvectors \( f_i\otimes h_j,\ i{=}\overline{1,n}, j{=}\overline{1,m} \)
+    it has \( MN \) independent eigenvectors \( f_i\otimes h_j,\ i{=}\overline{1,N}, j{=}\overline{1,M} \)
     and the corresponding eigenvalues are \( \mu_i \lambda_j \).
 \/}
 \end{center}
@@ -659,16 +659,16 @@ Then \( A\otimes B \) also has simple structure;
 Now suppose that among these pairwise products \( \mu_i \lambda_j \)
     there are only \( s \) distinct values \( \nu_1, \ldots, \nu_s \).
 To each eigenvalue \( \nu_k \) (\( k{=}\overline{1,s} \)) there corresponds
-    an eigenspace \[ E_k = \operatorname{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i{=}\overline{1,n},\ j{=}\overline{1,m}) \subset \mathbb{K}^{mn}. \]
-These eigenspace form a direct-sum decomposition of \( \mathbb{K}^{mn} \):
-    \[ \mathbb{K}^{mn} = E_1 \oplus \cdots \oplus E_s. \]
-Any vector \( x\in\mathbb{K}^{mn} \) can be uniquely represented
+    an eigenspace \[ E_k = \operatorname{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i{=}\overline{1,N},\ j{=}\overline{1,M}) \subset \mathbb{K}^{MN}. \]
+These eigenspace form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
+    \[ \mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. \]
+Any vector \( x\in\mathbb{K}^{MN} \) can be uniquely represented
     in the form
     \[
         x = x_1 + \cdots + x_s,\ x_k\in E_k,\ k=\overline{1,s}.
     \]
-This direct-sum decomposition of \( \mathbb{K}^{mn} \)
-    corresponds to a decomposition of the identity matrix \( E\in \mathbb{K}^{mn{\times}mn} \)
+This direct-sum decomposition of \( \mathbb{K}^{MN} \)
+    corresponds to a decomposition of the identity matrix \( E\in \mathbb{K}^{MN{\times}MN} \)
     (which defines an identity operator)
     into a sum of matrices of the spectral projections:
     \[
@@ -676,11 +676,11 @@ This direct-sum decomposition of \( \mathbb{K}^{mn} \)
     \]
 The spectral projection \( \mathcal{P}_k \) (\(k{=}\overline{1,s}\)) is given by the formula
     \[
-        \mathcal{P}_k x = x_k \in E_k\subset \mathbb{K}^{mn}
+        \mathcal{P}_k x = x_k \in E_k\subset \mathbb{K}^{MN}
     \]
     with respect to the above decomposition of \( x \).
 
-For any matrix \( X\in \mathbb{K}^{mn{\times}mn} \)
+For any matrix \( X\in \mathbb{K}^{MN{\times}MN} \)
     the following trivial equality holds:
     \[
         X = \sum_{i,j=1}^s P_i X P_j.
@@ -704,7 +704,7 @@ The natural way to define \( J \) is as follows:
 The system of equations
     \[\left\{\begin{aligned}
         & \mathcal{A}\Gamma X - (\Gamma X) \mathcal{A} = X - JX, \\
-        & J\Gamma X = 0,\ X\in \mathbb{K}^{mn{\times}mn}
+        & J\Gamma X = 0,\ X\in \mathbb{K}^{MN{\times}MN}
     \end{aligned}\right.\]
     has the unique solution:
     \[
@@ -719,15 +719,16 @@ The system of equations
 
 
 \begin{center}
-\textbf{Lemma.}
+\textbf{Theorem.}
 {\it
     Suppose
     \[
-        \|F\| \leq \gamma^{-1} = \min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert.
+        \|F\| \leq \frac14 \gamma^{-1} = \frac14 \min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert.
     \]
 
     Then \( A{\otimes}B + F \) is similar to
-    \( \sum_{k=1}^s \nu_k P_k - JX^o \) for some \( X^o \in \mathbb{K}^{mn{\times}mn} \),
+    \[ \sum_{k=1}^s \nu_k P_k - JX^o = \sum_{k=1}^s (\nu_k P_k - P_k X^o P_k) \]
+    for some \( X^o \in \mathbb{K}^{MN{\times}MN} \),
     \( \|X^o - F\|\leq 3\|F\| \).
 
     All the eigenvalues of \( A{\otimes}B - F \) are contained in the circles
@@ -738,15 +739,15 @@ The system of equations
             \right\},
         \ k{=}\overline{1,s}.
     \]
+    There is at least one eigenvalue in each of these circles.
 
     Suppose the eigenvalue \( \nu_k=\mu_{i_k}\lambda_{j_k} \) of \( A{\otimes}B \) has multiplicity \( 1 \),
         that is it has the only eigenvector \( v_k = f_{i_k}{\otimes}h_{j_k} \).
     It is equivalent to the statement that the eigenvalue \( \mu_{i_k} \)
         of \( A \) and the eigenvalue \( \lambda_{j_k} \) of \( B \)
         are both of multiplicity \( 1 \).
-    Then \( A{\otimes}B - F \) \emph{has} at least one
-        eigenvalue in the circle \( \Omega_k \).
-    The corresponding eigenvector \( \hat{v}_k \) is within bounds
+    Then \( A{\otimes}B - F \) has eigenvalue in the circle \( \Omega_k \)
+        and the corresponding eigenvector \( \hat{v}_k \) is within bounds
     \[
         \|\hat{v}_k - v_k\| \leq 4\gamma \|F\|.
     \]
@@ -762,6 +763,30 @@ The system of equations
     in that circle.
 \/}
 \end{center}
+
+For example, in the case of ``tiled'' matrix
+\[
+    J_N{\otimes}B =
+    \begin{pmatrix}
+        B & \cdots & B \\
+        \vdots & \ddots & \vdots \\
+        B & \cdots & B
+    \end{pmatrix}
+\]
+    we would have
+    \( \nu_1=N \),
+    \( \nu_2=0 \).
+Let \( \lambda_1,\ldots,\lambda_M \)
+    be the eigenvalues of \( B \).
+Spectrum of \( J_N{\otimes}B \) is
+    \[
+        \sigma(J_N{\otimes}B) = \left\{ \mu_i\lambda_j;\ i{=}1,2,\ j{=}\overline{1,M}\right\} = \{0\}\cup N\sigma(B).
+    \]
+All of these eigenvalues except for \( 0 \)
+    are of multiplicity \( 1 \)
+    and well-separated for sufficiently large \( N \).
+This directly implies the theorem of the previous section.
+    
 
 \section*{Conclusion}
 We have derived bounds
