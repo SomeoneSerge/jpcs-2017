@@ -1,0 +1,868 @@
+\documentclass[a4paper]{jpconf}
+\usepackage{graphicx}
+\usepackage{iopams}
+\newcommand{\nkjpcsthmstyle}{
+    \itshape
+}
+
+
+\begin{document}
+\title{The method of similar operators in the study of the spectra of adjacency matrices of graphs}
+
+\author{Serge Kozlukov}
+
+\address{\emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+
+\ead{newkozlukov@gmail.com}
+
+\begin{abstract}
+    The~method~of~similar~operators~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}
+        is used to investigate spectral properties
+        of a certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
+    Specifically, we consider matrices
+        obtained as combinations
+        of the Kronecker products~\cite{bellman-matrices-kron,XIANG2005210}
+        and small-norm perturbations.
+    We derive the estimates
+        of the spectra and the eigenvectors
+        of such matrices.
+\end{abstract}
+
+\section{Introduction}
+Consider a~directed graph on \( N \) vertices.
+Its adjacency matrix is defined as
+    the matrix
+    \( A = (a_{ij}) \)
+    of the size \( N\times N \),
+    in which \( a_{ij} \)
+    is the number of edges
+    from vertex \( i \)
+    to vertex \( j \).
+One can also consider generalized
+    adjacency matrices~\cite{van2003graphs}
+    which are defined as
+    arbitrary linear combinations
+    of the matrices \( A \) (or its transpose \( A^\mathtt{T} \)),
+    \( E \) (the identity matrix)
+    and \( J_N \) (the all-ones matrix).
+These matrices arise naturally
+    in some stochastic models~\cite[p.~184]{cvetkovic2010introduction}.
+Spectral  properties of these matrices
+    often play a vital role in such models.
+For instance, the markovian random walk on a~graph
+    yields the notion of eigenvector centrality
+    in a~network~\cite{bonacich1972factoring}.
+The transition matrix of such a random walk
+    is generalized adjacency matrix of a graph.
+The score of the vertex \( i \)
+    is defined as the \( i \)'th coordinate
+    of the dominating left eigenvector
+    of the transition matrix.
+The largest left eigenvalue of an irreducible column-stochastic matrix
+    is \( 1 \) and the dominating left eigenvector
+    defines the only stationary distribution
+    of a random walk.
+The PageRank~\cite{ilprints422} algorithm
+    originally used by Google
+    to compute the eigenvector centrality
+    relies on the Power-Method.
+Its speed of convergence depends on
+    the ratio of the two largest absolute eigenvalues.
+Stability of the stationary distribution
+    is determined~\cite{meyer1994sensitivity}
+    by the condition number
+    which is bounded from below
+    by a spectral gap --- the distance between
+    the two largest eigenvalues
+    of the transition matrix.
+The method of estimation of almost-invariant sets
+    proposed in~\cite{schwartz2006fluctuation}
+    relies as well on spectral decompositions of such matrices.
+In the Susceptible-Infective-Susceptible model
+    a viral spread in a network
+    is modeled as a markov process
+    with \( 2^N \) states.
+An asymptotic (endemic or epidemic) behaviour of this system
+    is determined by a spectral radius (the largest absolute eigenvalue)
+    of the adjacency matrix
+    and the rates of curage and infection.
+
+We should also note that the Kronecker products
+    of adjacency matrices
+    are themselves of interest
+    as they correspond to the adjacency matrices of
+    \emph{non-complete extended p-sum}s~(NEPS)
+    of graphs~\cite[p.~44]{cvetkovic2010introduction}.
+
+For more details and comprehensive description
+    of the graph spectra theory
+    and its applications
+    refer to~\cite{cvetkovic1980spectra,cvetkovic2010introduction,godsil2013algebraic}.
+
+\section{The method of similar operators}
+
+We use the abstract method of similar operators
+    to estimate the eigenvalues and eigenvectors
+    of certain types of such matrices.
+This method originates from Friedrichs~\cite{friedrichs1965advanced}
+    and was later developed in abstract setting
+    by Baskakov~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}.
+It relies on contraction mappings in Banach spaces.
+This approach is often superior to usual methods of perturbation theory
+    that use series expansions.
+Here we will only state the required notation and theorems
+    in a simplified form that accounts
+    for the finite-dimensionality
+    of the problems we consider.
+
+Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
+    be a field of either real or complex numbers.
+We consider the vector space \( \mathbb{K}^n,\ n\in \mathbb{N} \)
+    supplied with Euclidean structure:
+    \[
+        (x, y){=}\sum_{k=1}^n x_k\overline{y_k},
+        \ x{=}(x_1,\ldots, x_n),
+        \ y=(y_1,\ldots, y_n)
+        \in \mathbb{K}^n
+        \]
+    and the \( \mathrm{L}_2 \)-norm:
+    \(
+        \|x\|_2^2{=}(x,x).
+        \)
+We also consider the canonical basis \( e_1, \ldots, e_n \)
+    in \( \mathbb{K}^n \) given by
+    \( {(e_i)}_j = \delta_{ij},\ i,j=\overline{1,n} \)
+    (\(\delta_{ij} \) is the Kronecker symbol).
+When \( V_1, V_2 \) are normed vector spaces
+    we denote by \( L(V_1, V_2) \)
+    the space of bounded linear mappings
+    from \( V_1 \) to \( V_2 \).
+An algebra of bounded linear endomorphisms
+    from a Banach space \( V \)
+    into itself
+    is denoted by \( L(V) = L(V, V) \).
+It is a Banach algebra with the operator norm:
+    \[
+        \|A\|_{\mathrm{op}} =
+        \sup_{\scalebox{.5}{\(
+            \begin{array}{c}
+                \|x\|=1,\cr x\in V
+            \end{array}
+        \)}
+        } \|A x\|,\ A\in L(V).
+        \]
+Together with \( L(\mathbb{K}^n, \mathbb{K}^m) \)
+    we consider its isomorphic space \( \mathbb{K}^{m{\times}n} \)
+    of matrices of the size \( m{\times}n \)
+    with entries from the field \( \mathbb{K} \).
+The space \( \mathbb{K}^{n{\times}n}\sim L(\mathbb{K}^n) \)
+    forms a Banach algebra
+    when supplied with a submultiplicative norm
+    \( \|\cdot\| \),
+    e.g.: \( \|A\|_{\mathrm{op}} = \sup_{\|x\|_2=1,\ x\in \mathbb{K}^n} \|A x\|_2,\ \)
+    \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
+    for 
+    \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
+Finally we will also be dealing with the isomorphic spaces
+    \( L(L(\mathbb{K}^n)) \) and \( L(\mathbb{K}^{n{\times}n}) \)
+    with the operator norm.
+We will follow Krein
+    and refer to elements of \( L(\mathbb{K}^{n{\times}n}) \)
+    as ``transformers''.
+
+The spectrum of a matrix \( A \)
+    (the set of its eigenvalues)
+    will be denoted as \( \sigma(A) \).
+We call two matrices \( A_1, A_2 \) \emph{similar}
+    if there is an invertible matrix \( U \)
+    (the similarity matrix)
+    such that \( A_1 U = U A_2 \).
+Similar matrices share some spectral properties:
+    they are isospectral (\( \sigma(A_1) = \sigma(A_2) \))
+    and \( U \) maps eigenvectors of one to another's:
+    if \( A_2 x = \lambda x \) then \( A_1 U x = \lambda U x \).
+
+The most important notion
+    of the abstract method of similar operators
+    is that of an \emph{admissible triple}.
+For our specific purposes it suffices to say
+    that \( (\mathbb{K}^n, J, \Gamma) \)
+    forms an \emph{admissible triple}
+    for a matrix \( A\in\mathbb{K}^{n{\times}n} \)
+    if the following conditions are met:
+\begin{itemize}
+    \item \( J, \Gamma \in L(\mathbb{K}^{n{\times}n}) \)
+        are transformers;
+    \item \( J \) is a projection (\( J^2 = J \));
+    \item  \( \Gamma \) satisfies the equations:
+        \[
+            A \Gamma X - (\Gamma X) A = X - JX,
+        \]
+        \[
+            J\Gamma X = 0,\ X\in\mathbb{K}^{n{\times}n}.
+        \]
+\end{itemize}
+
+The main theorem of the method
+    may be then formulated as follows:
+
+\begingroup
+\textbf{Theorem}.
+\nkjpcsthmstyle
+    Consider a matrix \( A - B \)
+        with \( A, B \in \mathbb{K}^{n{\times}n} \).
+    Suppose \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
+        is an admissible triple for the matrix \( A \)
+        and suppose the following inequality holds:
+        \[
+            \|B\|\|\Gamma\|_{\mathrm{op}} \leq \frac14.
+        \]
+
+    Then there exists such a matrix \( X^o\in\mathbb{K}^{n{\times}n} \)
+        that \( A - B \) is similar to \( A - J X^o \);
+        the similarity matrix is \( E + \Gamma X^o \);
+        the following estimates are valid:
+        \[
+            \|X^o - B\| \leq 3 \left\|B\right\|,
+        \]
+        \[
+            \mathrm{spr}(X^o) \leq \|X^o\| \leq 4 \left\|B\right\|,
+        \]
+        where \( \mathrm{spr}(X^o) \)
+        is the spectral radius of \( X^o \) (the largest absolute eigenvalue).
+    Such \( X^o \) can be found as the limit of a convergent sequence
+        \( \left( \Phi^k(0);\ k\in\mathbb{N} \right) \)
+        in a Banach algebra \( \mathbb{K}^{n{\times}n} \).
+        Here \( \Phi \) is a nonlinear contraction mapping
+        defined on the ball \( \{X\in\mathbb{K}^{m{\times}n};\ \|X-B\|\leq 3\|B\| \} \)
+        and given by
+    \[
+        \Phi(X) = B\Gamma X - (\Gamma X)J(B + B\Gamma X) + B
+    \]
+        and \( \Phi^k = \Phi\circ\cdots\circ\Phi \)
+        (\( k \) copies of \( \Phi \))
+        denotes the composition.
+\endgroup
+
+\section{Results and discussion}
+
+\subsection*{Almost-complete graph example.}
+
+Consider a digraph defined by the following adjacency matrix:
+\[
+    A = J_N - B = \pmatrix{
+        1 & \cdots & 1 \cr
+        \vdots & \ddots & \vdots \cr
+        1 & \cdots & 1
+    } - B,
+\]
+
+Here \( J_N \) is the all-ones matrix.
+The unity on the intersection
+of \( i \)'th row and \( j \)'th column of \( B \)
+corresponds to an edge from \( i \) to \( j \)
+being absent in the graph.
+
+One can easily find the minimal annihilating polynomial of \( J_N \)
+    to be \( \lambda(\lambda - N) \).
+This comes from the fact that \( J_N^2 = N J_N \).
+Consequently the spectrum of \( J_N \) is
+\[
+    \sigma(J_N) = \left\{0, N\right\}.
+\]
+The only non-zero eigenvalue \( N \) has the corresponding eigenvector
+\[
+    h_N = \frac{1}{\sqrt{N}} \left(1, \ldots, 1\right)\in\mathbb{R}^N.
+\]
+The null-space of \( J_N \) is orthogonal to \( h_N \)
+    and allows the orthonormal basis:
+\[
+    h_k = \frac{1}{\sqrt{k(k+1)}} \left(1, \ldots, 1, -k, 0, \ldots, 0\right),\ k=\overline{1, N-1}
+\]
+(there are \( k \) unities in this vector).
+
+We conclude that the adjacency matrix \( A = J_N - B \) of this graph
+    is similar to \( \mathcal{A} - \mathcal{B} \)
+    where \( A \) is a block matrix (subscripts denote block sizes; in what follows throughout this subsection block sizes are the same and will be omitted):
+    \[
+        \mathcal{A} = \left(\begin{array}{c|c}
+        N & \mathbf{0}_{1{\times}(N{-}1)} \cr \hline
+            \mathbf{0}_{(N{-}1){\times}1} & \mathbf{0}_{(N{-}1){\times}(N{-}1)}
+        \end{array}\right) \in \mathbb{R}^{N{\times}N}
+    \]
+    and \( \mathcal{B} \) is obtained with a similarity transform:
+    \(
+        \mathcal{B} = U^{-1} B U \in \mathbb{R}^{N{\times}N}.
+    \)
+The similarity matrix \( U \) is given by stacking the eigenvectors in columns:
+    \[
+        U = \mathrm{columns}(h_N, h_1, \ldots, h_{N-1}) =
+        \pmatrix{%
+            | & | &        & | \cr
+            h_N    & h_1    & \ldots & h_{N-1} \cr
+            | & | &        & |
+        }.
+    \]
+
+Following the general method,
+    we should first construct an admissible triple.
+Since \( \mathcal{A} \) is block-diagonal
+    it is natural to set \( J \) with the formula
+    \[
+        JX =
+        \left(\begin{array}{c|c}
+            x_{11} & \mathbf{0} \cr \hline
+            \mathbf{0} & X_{22}
+        \end{array}\right)
+    \]
+    for all block matrices
+    \[
+        X =
+        \left(\begin{array}{c|c}
+            x_{11} & X_{12} \cr \hline
+            X_{21} & X_{22}
+        \end{array}\right)\in\mathbb{K}^{N{\times}N}.
+    \]
+Then \( A - JX \) is block-diagonal for any \( X \)
+    and its spectrum is the union
+    of its diagonal blocks' spectra:
+    \( \sigma(A - JX) = \{N, \sigma(-X_{22}) \} \).
+
+Now we can find the corresponding \( \Gamma \).
+Suppose it is defined by the formula
+    \[ \Gamma X = \pmatrix{
+        \Gamma_{11}(X) & \Gamma_{12}(X) \cr
+        \Gamma_{21}(X) & \Gamma_{22}(X)
+        }.
+    \]
+Then the equations
+    \[
+        \mathcal{A} \Gamma X - (\Gamma X)\mathcal{A} =
+        N
+        \pmatrix{
+          0 & \Gamma_{12}(X) \cr
+          -\Gamma_{21}(X) & 0
+        } = X - JX,
+     \]
+and \( J\Gamma X = 0 \) yield the result
+    \[
+        \Gamma X = \frac{1}{N} \pmatrix{ 0 & X_{12} \cr -X_{21} & 0 },\ X\in\mathbb{K}^{N{\times}N}.
+    \]
+
+The last step is to estimate the norms and apply the theorem.
+One can easily check that \( \|\Gamma\|_{\mathrm{op}} = \frac1N \).
+It is also apparent that \( \|\mathcal{B}\|_{\mathrm{op}} = \|B\|_{\mathrm{op}} \leq \|B\|_{\mathrm{F}} \)
+    since multiplication by the orthogonal matrix \( U \)
+    is an isometry in Euclidean space.
+The Frobenius norm \( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_ij^2} = M} \)
+    of \( B \)
+    reduces to the square root of the number of absent edges.
+This directly implies the following
+
+\begingroup
+\textbf{Theorem}.
+\nkjpcsthmstyle
+    Suppose the number of absent edges is
+    \[ M < \frac{1}{16} N^2. \]
+    Then the spectrum of the adjacency matrix \( A = J_N - B \)
+        can be represented as disjoint union
+    \[
+        \sigma(A) = \{ N - x_{11}^o \} \cup \sigma_2.
+    \]
+    The dominating eigenvector of \( A \) is
+    \[
+        \hat{h}_N = U(E+\Gamma X^o) e_1 =
+            h_N - \frac1N (X_{21,(1)}^o h_1 + \cdots + X_{21, (N{-}1)}^o h_{N{-}1}),
+    \]
+    where \( X_{21,(i)}^o,\ i=\overline{1,N{-}1} \) are the coordinates
+    of the vector \( X_{21}^o \).
+    Moreover \( \hat{h}_N\in\mathbb{R}^{N} \),
+    \( x_{11}^o\in\mathbb{R} \) and \( \sigma_2\subset\mathbb{C} \)
+    satisfy the following inequalities:
+    \[
+        \|\hat{h}_N - h_N\|_2 \leq 4\frac{\sqrt{M}}{N},
+    \]
+    \[
+        \left| x_{11}^o \right|,
+        \ \sup_{\lambda\in\sigma_2} \left|\lambda\right| \leq 4\sqrt{M}.
+    \]
+\endgroup
+
+\subsection*{A-tiled matrix example.}
+
+Now let \( A\in\mathbb{K}^{M{\times}M} \)
+    and consider the following (``A-tiled'') block-matrix
+    \[
+        \mathbb{A} =
+        \pmatrix{
+            A & \cdots & A \cr
+            \vdots & \ddots & \vdots \cr
+            A & \cdots & A
+        }
+        \in\mathbb{K}^{{MN}{\times}{MN}}
+    \]
+    and a perturbed matrix
+    \[
+        \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{MN}{\times}{MN}}.
+    \]
+
+\begingroup
+\textbf{Lemma}.
+\nkjpcsthmstyle
+    Suppose \( A \) is invertible self-adjoint matrix.
+    Then it has \( M \) orthonormal eigenvectors \( h_1, \ldots, h_M \)
+    (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,M}\))
+    with the corresponding eigenvalues
+    \( \lambda_1, \ldots, \lambda_M \neq 0\).
+    The spectrum of \( \mathbb{A} \) is
+    \[
+        \sigma(\mathbb{A}) = \{0\}\cup N\sigma(A) = \{0\} \cup \{N\lambda;\ \lambda\in\sigma(A) \}.
+    \]
+    Non-zero eigenvalues of \( \mathbb{A} \)
+        have corresponding block eigenvectors:
+    \[
+        f_j = \frac{1}{\sqrt{N}} (h_j, \ldots, h_j)\in \mathbb{K}^{MN},\ j=\overline{1,M}.
+    \]
+    The null-space of \( \mathbb{A} \)
+        has an orthonormal basis:
+    \[
+        f_{j,k} = \frac{1}{\sqrt{k(k+1)}}
+        (
+        e_j, \ldots, e_j,
+        -ke_j,
+        0, \ldots, 0
+        ) \in\mathbb{K}^{{MN}{\times}{MN}}
+    \]
+    (there are \( k \) copies of \( e_j \) in each of \( f_{j,k} \)).
+
+    The matrix \( \mathbb{A} \) is similar to a block-diagonal matrix:
+    \[
+        \mathcal{A} =
+        \left(\begin{array}{c|c}
+            \mathrm{diag}(N\lambda_1,\ldots,N\lambda_M) & \mathbf{0} \cr \hline
+            \mathbf{0} & \mathbf{0}
+        \end{array}\right)\in\mathbb{K}^{{MN}{\times}{MN}};
+    \]
+    the similarity transform matrix is
+    \[
+        U = \mathrm{columns}
+        \left(f_1, \ldots, f_M, f_{1,1}, \ldots, f_{1,N{-1}}, \ldots, f_{M,N{-}1}\right).
+    \]
+\endgroup
+
+Throughout this subsection
+    we will consider block matrices
+    of the size \( {MN}{\times}{MN} \)
+    in the form
+    \[
+    X =
+        \left(\begin{array}{c|c}
+            \matrix{
+                x_{11} & \cdots & x_{1M} \cr
+                \vdots & \ddots & \vdots \cr
+                x_{M1} & \cdots & x_{MM}
+            } &
+            \matrix{
+                x_{1,M+1} \cr
+                \vdots \cr
+                x_{M,M+1}
+            } \cr \hline
+            \matrix{
+                x_{M+1,1} &
+                \cdots &
+                x_{M+1,M}
+            } &
+            X_{M+1,M+1}
+        \end{array}\right),
+    \]
+where
+\( X_{ij}      {=} x_{ij},
+ \ X_{M{+}1,j} {=} x_{M{+}1,j},
+ \ X_{i,M{+}1} {=} x_{i,M{+}1} \in \mathbb{K} \)
+for \( 1 \leq {i,j} \leq M \),
+and
+\( X_{M{+}1,M{+}1} \) is a block of the size \( {M(N{-}1){\times}M(N-1)} \).
+
+Just like before we are going to investigate
+    the spectral behaviour of \( \mathbb{A} \) under perturbations.
+We begin with constructing an admissible triple.
+A natural choice for \( J \) in this case is
+\[
+        J X =
+        \left(\begin{array}{c|c}
+            \matrix{
+                x_{11} &  & 0 \cr
+                 & \ddots &  \cr
+                0 &  & x_{MM}
+            } &
+            \matrix{
+                0 \cr
+                \vdots \cr
+                0
+            } \cr \hline
+            \matrix{
+                0 & \cdots & 0
+            } &
+            X_{M+1,M+1}
+        \end{array}\right).
+\]
+
+\begingroup
+\textbf{Lemma}.
+\nkjpcsthmstyle
+Suppose \( A \) has a simple spectrum,
+    i.e.\ its eigenvalues are pairwise distinct:
+    \( \lambda_i\neq\lambda_j \) for all \( 1\leq i{\neq}j \leq M \).
+
+    Then a tuple \( (\mathbb{K}^{{MN}{\times}{MN}}, J, \Gamma) \)
+        forms an admissible triple if we define
+    \[
+        \Gamma X = 
+            \frac1n \left(\begin{array}{c|c}
+            \matrix{
+                0               & \gamma_{12}x_{12} & \cdots & \gamma_{1M}x_{1M} \cr
+                \gamma_{21}x_{21}  & 0              & \cdots & \gamma_{2M}x_{2M} \cr
+                \vdots          & \vdots         & \ddots & \vdots & \ \cr
+                \gamma_{M1}x_{M1}  & \gamma_{M2}x_{M2} & \cdots & 0
+            } &
+            \matrix{
+                \gamma_{1,M+1}x_{1,M+1} \cr
+                \gamma_{2,M+1}x_{2,M+1} \cr
+                \vdots \cr
+                \gamma_{M,M+1}x_{M,M+1}
+            } \cr \hline
+           \matrix{
+                \gamma_{M{+}1,1}x_{M{+}1,1} &
+                \gamma_{M{+}1,2}x_{M{+}1,2} &
+                \cdots &
+                \gamma_{M{+}1,M}x_{M{+}1,M}
+            } &
+            \mathbf{0}
+        \end{array}\right),
+    \]
+    \[
+        \gamma_{ij} = \left\{
+            \matrix{
+                & \frac{1}{\lambda_i - \lambda_j},\ 1\leq i{\neq}j \leq M{+}1,\cr
+                & 0,\ i=j
+            }
+            \right.
+    \]
+    and we use the convention:
+    \[
+        \lambda_{M{+}1} = 0.
+    \]
+
+    The operator norm of \( \Gamma \) is:
+    \[
+        \|\Gamma\|_{\mathrm{op}} =
+        \frac1N
+        \frac{1}{\min\limits_{1\leq i{\neq}j \leq M{+}1}|\lambda_i - \lambda_j|} =
+        \]
+    \[
+        = \frac1N
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq i{\neq}j \leq M }{|\lambda_i - \lambda_j|}},
+         \frac{1}{
+             \min\limits_{1\leq j \leq M}{|\lambda_j|}}
+         \right\}
+        \]
+\endgroup
+
+\begingroup
+\textbf{Theorem}.
+\nkjpcsthmstyle
+Suppose \( A \) has simple spectrum and the following inequality holds:
+\[
+    \left\| \mathbb{B} \right\|_{\mathrm{op}}
+        \leq 
+        \frac{N}{4}
+         \min\left\{
+             \min\limits_{1\leq i{\neq}j \leq M }{|\lambda_i - \lambda_j|},
+             \min\limits_{1\leq j \leq M}{|\lambda_j|}
+         \right\}.
+ \]
+
+Then the spectrum of disturbed matrix \( \mathbb{A} - \mathbb{B} \) is
+\[
+    \sigma\left(\mathbb{A}\right) =
+        \left\{
+            N\lambda_1 - x_{11}^o, \ldots, N\lambda_M - x_{MM}^o
+        \right\}
+    \cup \sigma_{M{+}1}.
+\]
+
+The eigenvectors
+    \( \hat{f}_j,\ \hat{f}_{j,k},\ j{=}\overline{1,M},\ k{=}\overline{1,N{-1}} \)
+    of the matrix \( \mathbb{A}{-}\mathbb{B} \),
+    the values \( x_{jj}^o,\ j{=}\overline{1,M} \)
+    and the set \( \sigma_{M{+}1} \) are in the following bounds:
+\[
+    \left| x_{jj}^o\right|,
+    \ \max_{\lambda\in\sigma_{M{+}1}} \left|\lambda\right|
+    \leq 4\|B\|,
+\]
+\[
+    \left\| \hat{f}_j - f_j \right\|_2,
+    \ \left\| \hat{f}_{j,k} - f_{j,k}\right\|_2
+    \leq
+    \frac4N \|B\|
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq l{\neq}p \leq M }{|\lambda_l - \lambda_p|}},
+         \frac{1}{
+             \min\limits_{1\leq l \leq M}{|\lambda_l|}}
+         \right\}
+\]
+for all \( j{=}\overline{1,M}, k{=}\overline{1,N-1} \).
+\endgroup
+
+\subsection*{Kronecker products}
+
+Now we consider Kronecker products
+\[
+    A\otimes B =
+    \pmatrix{
+        a_{11} B & \cdots & a_{1N} B \cr
+        \vdots   & \ddots & \vdots \cr
+        a_{N1} B & \cdots & a_{NN} B
+    }
+    \in \mathbb{K}^{{MN}{\times}{MN}}
+\]
+of squared matrices
+\( A={(a_{ij})}\in\mathbb{K}^{N{\times}N},
+ \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M}. \)
+We will analyze its spectral properties
+    under small-norm perturbations:
+\begin{equation}\label{nkjpcs-kronperturb}
+    A\otimes B - F.
+\end{equation}
+
+% TODO:
+% We will also address special
+%     perturbations of the following form (cf.~\cite{XIANG2005210}):
+% \[
+%     (A-\Delta A)\otimes (B - \Delta B).
+% \]
+
+Kronecker product has quite some appealing properties~\cite{bellman-matrices-kron}.
+\begin{itemize}
+\item It is associative:
+    \[ A\otimes (B\otimes C) = (A\otimes B)\otimes C. \]
+\item It is distributive with respect to addition:
+    \[ (A+B)\otimes(C+D) = A\otimes C + A\otimes D + B\otimes C + B\otimes D. \]
+\item The Kronecker product of matrix products has the following property:
+    \[ (AB)\otimes(CD) = (A\otimes C)(B\otimes D) \]
+    whenever products \( AB \) and \( CD \) make sense.
+\item The trace of \( A\otimes B \) is \[ \mathrm{tr}(A\otimes B) = \mathrm{tr}A\mathrm{tr}B. \]
+\item If \( A \) and \( B \) are both symmetric matrices,
+      then \( A\otimes B \) is symmetric as well.
+\end{itemize}
+Note also that the ``tiled'' matrix from the last example
+    can be represented as a Kronecker product:
+\[
+    \mathbb{A} =
+    \pmatrix{
+    A & \cdots & A\cr
+    \vdots & \ddots & \vdots \cr
+    A & \cdots & A} =
+        J_N\otimes A.
+    \]
+
+\begingroup
+\textbf{Lemma}.
+\nkjpcsthmstyle
+Suppose \( A \) and \( B \) have simple structure,
+    i.e. \( A \) has \( N \) eigenvectors
+    \( f_1, \ldots, f_N \)
+    whose corresponding eigenvalues are \( \mu_1, \ldots, \mu_N \)
+    and \( B \) has eigenvectors \( h_1, \ldots, h_M \)
+    with the eigenvalues \( \lambda_1, \ldots, \lambda_M \).
+Then \( A\otimes B \) also has simple structure;
+    it has \( MN \) independent eigenvectors \( f_i\otimes h_j,\ i{=}\overline{1,N}, j{=}\overline{1,M} \)
+    and the corresponding eigenvalues are \( \mu_i \lambda_j \).
+\endgroup
+
+
+Now suppose that among these pairwise products \( \mu_i \lambda_j \)
+    there are only \( s \) distinct values \( \nu_1, \ldots, \nu_s \).
+To each eigenvalue \( \nu_k \) (\( k{=}\overline{1,s} \)) there corresponds
+    an eigenspace \[ E_k = \mathrm{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i{=}\overline{1,N},\ j{=}\overline{1,M}) \subset \mathbb{K}^{MN}. \]
+These eigenspace form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
+    \[ \mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. \]
+Any vector \( x\in\mathbb{K}^{MN} \) can be uniquely represented
+    in the form
+    \begin{equation}\label{nkjpcs-decomposition-x}
+        x = x_1 + \cdots + x_s,\ x_k\in E_k,\ k=\overline{1,s}.
+    \end{equation}
+This direct-sum decomposition of \( \mathbb{K}^{MN} \)
+    corresponds to a decomposition of the identity matrix \( E\in \mathbb{K}^{MN{\times}MN} \)
+    (which defines an identity operator)
+    into a sum of matrices of the spectral projections:
+    \[
+        E = P_1 + \cdots + P_s.
+    \]
+The spectral projection \( \mathcal{P}_k \) (\(k{=}\overline{1,s}\)) is given by the formula
+    \[
+        \mathcal{P}_k x = x_k \in E_k\subset \mathbb{K}^{MN}
+    \]
+    with respect to the decomposition~\((\ref{nkjpcs-decomposition-x})\) of \( x \).
+
+For any matrix \( X\in \mathbb{K}^{MN{\times}MN} \)
+    the following trivial equality holds:
+    \[
+        X = \sum_{i,j=1}^s P_i X P_j.
+    \]
+
+The matrix \( A\otimes B \) can be decomposed into
+    \[
+        \mathcal{A} = \sum v_j P_j.
+    \]
+
+Now we should be able reproduce the same steps as before
+    to retrieve the estimates.
+
+% \begin{center}
+% \textbf{Lemma.}
+% {\it
+The natural way to define \( J \) is as follows:
+    \[
+        JX = \sum_{j=1}^s P_j X P_j.
+    \]
+The system of equations
+    \[\left\{\matrix{
+        & \mathcal{A}\Gamma X - (\Gamma X) \mathcal{A} = X - JX, \cr
+        & J\Gamma X = 0,\ X\in \mathbb{K}^{MN{\times}MN}
+    }\right.\]
+    has the unique solution:
+    \[
+        \Gamma X = \sum_{1\leq i{\neq}j \leq s} \frac{1}{\nu_i-\nu_j} P_i X P_j.
+    \]
+    The norm of \( \Gamma \) is:
+    \[
+        \|\Gamma\|_{\mathrm{op}} = \gamma = \frac{1}{\min_{1\leq i{\neq}j\leq s}\left|\nu_i - \nu_j\right|}
+    \]
+% \/}
+% \end{center}
+
+
+\begingroup
+\textbf{Theorem}.
+\nkjpcsthmstyle
+    Consider the perturbed matrix~\((\ref{nkjpcs-kronperturb})\)
+        \[
+            A{\otimes}B - F.
+        \]
+    Let \( A\in\mathbb{K}^{N{\times}N} \) and \( B\in\mathbb{K}^{M{\times}M} \)
+        be diagonalizable matrices.
+    Let \( f_1, \ldots, f_N \) be the eigenvectors of \( A \)
+        corresponding to the eigenvalues \( \mu_1, \ldots, \mu_N \)
+        and let \( h_1, \ldots, h_M \) be the eigenvectors of \( B \)
+        corresponding to the eigenvalues \( \lambda_1, \ldots, \lambda_M \).
+    The spectrum of their Kronecker product \( A{\otimes}B \)
+        is composed of all the possible pairwise products \( \mu_i \lambda_j \)
+        and the corresponding eigenvectors are \( f_i\otimes h_j \).
+    Suppose that out of these \( MN \) eigenvalues only \( s \) are distinct:
+        \( \nu_1, \ldots \nu_s \).
+
+    Suppose
+    \[
+        \|F\| \leq \frac14 \gamma^{-1} = \frac14 \min_{1\leq i{\neq}j\leq s}\left|\nu_i - \nu_j\right|.
+    \]
+
+    Then \( A{\otimes}B - F \) is similar to
+    \[ \sum_{k=1}^s \nu_k P_k - JX^o = \sum_{k=1}^s (\nu_k P_k - P_k X^o P_k) \]
+    for some \( X^o \in \mathbb{K}^{MN{\times}MN} \),
+    \( \|X^o - F\|\leq 3\|F\| \).
+
+    All the eigenvalues of \( A{\otimes}B - F \) are contained in the circles
+    \[
+        \Omega_k = \left\{
+            \lambda\in\mathbb{C};
+            \ \left|\lambda - \nu_k\right| \leq 4\|F\|
+            \right\},
+        \ k{=}\overline{1,s}.
+    \]
+    There is at least one eigenvalue in each of these circles.
+
+    Suppose the eigenvalue \( \nu_k=\mu_{i_k}\lambda_{j_k} \) of \( A{\otimes}B \) has multiplicity \( 1 \),
+        that is it has the only eigenvector \( v_k = f_{i_k}{\otimes}h_{j_k} \).
+    It is equivalent to the statement that the eigenvalue \( \mu_{i_k} \)
+        of \( A \) and the eigenvalue \( \lambda_{j_k} \) of \( B \)
+        are both of multiplicity \( 1 \).
+    Then \( A{\otimes}B - F \) has eigenvalue in the circle \( \Omega_k \)
+        and the corresponding eigenvector \( \hat{v}_k \) is within bounds
+    \[
+        \|\hat{v}_k - v_k\| \leq 4\gamma \|F\|.
+    \]
+    If \( \nu_k \) is well separated from all the other eigenvalues of \( A{\otimes}B \):
+    \[
+        \min_{l\neq k}
+        \left|
+        \nu_k - \nu_l
+        \right|
+        \geq 4\|F\|,
+    \]
+    then \( \nu_k \) is the only eigenvalue of \( A{\otimes}B - F \)
+    in that circle.
+\endgroup
+
+For example, in the case of a ``tiled'' matrix
+\[
+    J_N{\otimes}B =
+    \pmatrix{
+        B & \cdots & B \cr
+        \vdots & \ddots & \vdots \cr
+        B & \cdots & B
+    }
+\]
+    we would have
+    \( \nu_1=N \),
+    \( \nu_2=0 \).
+Let \( \lambda_1,\ldots,\lambda_M \)
+    be the eigenvalues of \( B \).
+Spectrum of \( J_N{\otimes}B \) is
+    \[
+        \sigma(J_N{\otimes}B) = \left\{ \mu_i\lambda_j;\ i{=}\overline{1,2},\ j{=}\overline{1,M}\right\} = \{0\}\cup N\sigma(B).
+    \]
+All of these eigenvalues except for \( 0 \)
+    are of multiplicity \( 1 \)
+    and well-separated for sufficiently large \( N \).
+Then \( \gamma=\frac1N \).
+This directly implies the theorem of the previous section.
+
+These results might be refined
+    with the use of the theorem on splitting an operator~\cite{baskakov1987theorem}
+    which allows to consider each eigenvalue individually
+    and obtain more precise estimates for the corresponding
+    eigenvalue of the perturbed matrix.
+% The higher the gap between a picked eigenvalue
+%     and the rest of the spectrum
+%     the higher the precision of the estimate
+%     for the corresponding eigenvalue of the perturbed matrix.
+    
+
+\section*{Conclusion}
+
+We have derived bounds
+    for perturbations of Kronecker products
+    of matrices
+    using the method of similar operators
+    which is a powerful tool in perturbation theory.
+Developed in the context of Banach spaces
+    this method turns out to be just as useful
+    in finite-dimensional problems.
+
+The problem of perturbation analysis for the Kronecker products
+    despite being old still has a whole open field for future research.
+An example of more general problem
+    yet quite similar to the one just considered
+    is that of analysis of tensor products
+    of finite-dimensional operators (defined by matrices)
+    and abstract operators in Banach spaces.
+
+\section*{References}
+\bibliographystyle{iopart-num}
+\bibliography{sergey_kozlukov_jpcs}{}
+\end{document}
