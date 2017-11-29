@@ -3,6 +3,10 @@
 \usepackage{iopams}
 % amsmath defined substack
 \usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{nkjpcsthm}{Theorem}
+\newtheorem{nkjpcslem}{Lemma}
 
 
 \begin{document}
@@ -199,9 +203,7 @@ For our specific purposes it suffices to say
 The main theorem of the method
     may be then formulated as follows:
 
-\begin{center}
-\textbf{Theorem.}
-{\it
+\begin{nkjpcsthm}
     Consider a matrix \( A - B \)
         with \( A, B \in \mathbb{K}^{n{\times}n} \).
     Suppose \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
@@ -234,8 +236,7 @@ The main theorem of the method
     \]
         and \( \Phi^k = \underbrace{\Phi\circ\cdots\circ\Phi}_{k\ \text{copies}} \)
         denotes the composition.
-}
-\end{center}
+\end{nkjpcsthm}
 
 \section{Results and discussion}
 
@@ -348,9 +349,7 @@ The Frobenius norm \( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_ij^2} = M} \)
     reduces to the square root of the number of absent edges.
 This directly implies the following
 
-\begin{center}
-\textbf{Theorem.}
-{\it
+\begin{nkjpcsthm}
     Suppose the number of absent edges is
     \[ M < \frac{1}{16} N^2. \]
     Then the spectrum of the adjacency matrix \( A = J_N - B \)
@@ -375,8 +374,7 @@ This directly implies the following
         \lvert x_{11}^o \rvert,
         \ \sup_{\lambda\in\sigma_2} \lvert\lambda\rvert \leq 4\sqrt{M}.
     \]
-}
-\end{center}
+\end{nkjpcsthm}
 
 \subsection*{A-tiled matrix example.}
 
@@ -396,9 +394,7 @@ Now let \( A\in\mathbb{K}^{M{\times}M} \)
         \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{MN}{\times}{MN}}.
     \]
 
-\begin{center}
-\textbf{Lemma.}
-{\it
+\begin{nkjpcslem}
     Suppose \( A \) is invertible self-adjoint matrix.
     Then it has \( M \) orthonormal eigenvectors \( h_1, \ldots, h_M \)
     (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,M}\))
@@ -437,9 +433,7 @@ Now let \( A\in\mathbb{K}^{M{\times}M} \)
         U = \operatorname{columns}
         \left(f_1, \ldots, f_M, f_{1,1}, \ldots, f_{1,N{-1}}, \ldots, f_{M,N{-}1}\right).
     \]
-\/
-}
-\end{center}
+\end{nkjpcslem}
 
 Throughout this subsection
     we will consider block matrices
@@ -498,9 +492,7 @@ A natural choice for \( J \) in this case is
         \end{array}\right).
 \]
 
-\begin{center}
-\textbf{Lemma.}
-{\it
+\begin{nkjpcslem}
 Suppose \( A \) has a simple spectrum,
     i.e.\ its eigenvalues are pairwise distinct:
     \( \lambda_i\neq\lambda_j \) for all \( 1\leq i{\neq}j \leq M \).
@@ -559,12 +551,9 @@ Suppose \( A \) has a simple spectrum,
              \min\limits_{1\leq j \leq M}{|\lambda_j|}}
          \right\}
         \]
-\/}
-\end{center}
+\end{nkjpcslem}
 
-\begin{center}
-\textbf{Theorem.}
-{\it
+\begin{nkjpcsthm}
 Suppose \( A \) has simple spectrum and the following inequality holds:
 \[
     \left\| \mathbb{B} \right\|_{\mathrm{op}}
@@ -608,8 +597,7 @@ The eigenvectors
          \right\}
 \]
 for all \( j{=}\overline{1,M}, k{=}\overline{1,N-1} \).
-\/}
-\end{center}
+\end{nkjpcsthm}
 
 \subsection*{Kronecker products}
 
@@ -625,8 +613,9 @@ Now we consider Kronecker products
 \]
 of squared matrices
 \( A={(a_{ij})}\in\mathbb{K}^{N{\times}N},
- \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M} \)
-and small-norm perturbations
+ \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M}. \)
+We will analyze its spectral properties
+    under small-norm perturbations:
 \[
     A\otimes B - F.
 \]
@@ -662,9 +651,7 @@ Note also that the ``tiled'' matrix from the last example
         J_N\otimes A.
     \]
 
-\begin{center}
-\textbf{Lemma.}
-{\it
+\begin{nkjpcslem}
 Suppose \( A \) and \( B \) have simple structure,
     i.e. \( A \) has \( N \) eigenvectors
     \( f_1, \ldots, f_N \)
@@ -674,8 +661,7 @@ Suppose \( A \) and \( B \) have simple structure,
 Then \( A\otimes B \) also has simple structure;
     it has \( MN \) independent eigenvectors \( f_i\otimes h_j,\ i{=}\overline{1,N}, j{=}\overline{1,M} \)
     and the corresponding eigenvalues are \( \mu_i \lambda_j \).
-\/}
-\end{center}
+\end{nkjpcslem}
 
 
 Now suppose that among these pairwise products \( \mu_i \lambda_j \)
@@ -740,9 +726,7 @@ The system of equations
 % \end{center}
 
 
-\begin{center}
-\textbf{Theorem.}
-{\it
+\begin{nkjpcsthm}
     Suppose
     \[
         \|F\| \leq \frac14 \gamma^{-1} = \frac14 \min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert.
@@ -783,8 +767,7 @@ The system of equations
     \]
     then \( \nu_k \) is the only eigenvalue of \( A{\otimes}B - F \)
     in that circle.
-\/}
-\end{center}
+\end{nkjpcsthm}
 
 For example, in the case of a ``tiled'' matrix
 \[
