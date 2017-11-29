@@ -637,7 +637,20 @@ and small-norm perturbations
 %     (A-\Delta A)\otimes (B - \Delta B).
 % \]
 
-Note that the ``tiled'' matrix from the last example
+Kronecker product has quite some appealing properties~\cite{bellman-matrices-kron}.
+\begin{itemize}
+\item It is associative:
+    \[ A\otimes (B\otimes C) = (A\otimes B)\otimes C. \]
+\item It is distributive with respect to addition:
+    \[ (A+B)\otimes(C+D) = A\otimes C + A\otimes D + B\otimes C + B\otimes D. \]
+\item It is \emph{sort of} distributive with respect to matrix multiplication:
+    \[ (AB)\otimes(CD) = (A\otimes C)(B\otimes D) \]
+    whenever products \( AB \) and \( CD \) make sense.
+\item The trace of \( A\otimes B \) is \[ \operatorname{tr}(A\otimes B) = \operatorname{tr}A\operatorname{tr}B. \]
+\item If \( A \) and \( B \) are both symmetric matrices,
+      then \( A\otimes B \) is symmetric as well.
+\end{itemize}
+Note also that the ``tiled'' matrix from the last example
     can be represented as a Kronecker product:
 \[
     \mathbb{A} =
@@ -718,7 +731,7 @@ The system of equations
     \[
         \Gamma X = \sum_{1\leq i{\neq}j \leq s} \frac{1}{\nu_i-\nu_j} P_i X P_j.
     \]
-    The operator norm of \( \Gamma \) is:
+    The norm of \( \Gamma \) is:
     \[
         \|\Gamma\|_{\mathrm{op}} = \gamma = \frac{1}{\min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert}
     \]
