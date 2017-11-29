@@ -19,7 +19,7 @@
 \ead{newkozlukov@gmail.com}
 
 \begin{abstract}
-    The~method~of~similar~operators~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}
+    The~method~of~similar~operators~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}
         is used to investigate spectral properties
         of a certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
     Specifically, we consider matrices
@@ -109,7 +109,7 @@ We use the abstract method of similar operators
     of certain types of such matrices.
 This method originates from Friedrichs~\cite{friedrichs1965advanced}
     and was later developed in abstract setting
-    by Baskakov~\cite{baskakov1983methods,baskakov2014memory,baskakov2017method,baskakov2013completeness}.
+    by Baskakov~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}.
 It relies on contraction mappings in Banach spaces.
 This approach is often superior to usual methods of perturbation theory
     that use series expansions.
@@ -619,9 +619,9 @@ of squared matrices
  \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M}. \)
 We will analyze its spectral properties
     under small-norm perturbations:
-\[
+\begin{equation}\label{nkjpcs-kronperturb}
     A\otimes B - F.
-\]
+\end{equation}
 
 % TODO:
 % We will also address special
@@ -675,9 +675,9 @@ These eigenspace form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
     \[ \mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. \]
 Any vector \( x\in\mathbb{K}^{MN} \) can be uniquely represented
     in the form
-    \[
+    \begin{equation}\label{nkjpcs-decomposition-x}
         x = x_1 + \cdots + x_s,\ x_k\in E_k,\ k=\overline{1,s}.
-    \]
+    \end{equation}
 This direct-sum decomposition of \( \mathbb{K}^{MN} \)
     corresponds to a decomposition of the identity matrix \( E\in \mathbb{K}^{MN{\times}MN} \)
     (which defines an identity operator)
@@ -689,7 +689,7 @@ The spectral projection \( \mathcal{P}_k \) (\(k{=}\overline{1,s}\)) is given by
     \[
         \mathcal{P}_k x = x_k \in E_k\subset \mathbb{K}^{MN}
     \]
-    with respect to the above decomposition of \( x \).
+    with respect to the decomposition~\eqref{nkjpcs-decomposition-x} of \( x \).
 
 For any matrix \( X\in \mathbb{K}^{MN{\times}MN} \)
     the following trivial equality holds:
@@ -730,12 +730,28 @@ The system of equations
 
 
 \begin{nkjpcsthm}
+    Consider the perturbed matrix~\eqref{nkjpcs-kronperturb}
+        \[
+            A{\otimes}B - F.
+        \]
+    Let \( A\in\mathbb{K}^{N{\times}N} \) and \( B\in\mathbb{K}^{M{\times}M} \)
+        be diagonalizable matrices.
+    Let \( f_1, \ldots, f_N \) be the eigenvectors of \( A \)
+        corresponding to the eigenvalues \( \mu_1, \ldots, \mu_N \)
+        and let \( h_1, \ldots, h_M \) be the eigenvectors of \( B \)
+        corresponding to the eigenvalues \( \lambda_1, \ldots, \lambda_M \).
+    The spectrum of their Kronecker product \( A{\otimes}B \)
+        is composed of all the possible pairwise products \( \mu_i \lambda_j \)
+        and the corresponding eigenvectors are \( f_i\otimes h_j \).
+    Suppose that out of these \( MN \) eigenvalues only \( s \) are distinct:
+        \( \nu_1, \ldots \nu_s \).
+
     Suppose
     \[
         \|F\| \leq \frac14 \gamma^{-1} = \frac14 \min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert.
     \]
 
-    Then \( A{\otimes}B + F \) is similar to
+    Then \( A{\otimes}B - F \) is similar to
     \[ \sum_{k=1}^s \nu_k P_k - JX^o = \sum_{k=1}^s (\nu_k P_k - P_k X^o P_k) \]
     for some \( X^o \in \mathbb{K}^{MN{\times}MN} \),
     \( \|X^o - F\|\leq 3\|F\| \).
@@ -788,23 +804,44 @@ Let \( \lambda_1,\ldots,\lambda_M \)
     be the eigenvalues of \( B \).
 Spectrum of \( J_N{\otimes}B \) is
     \[
-        \sigma(J_N{\otimes}B) = \left\{ \mu_i\lambda_j;\ i{=}1,2,\ j{=}\overline{1,M}\right\} = \{0\}\cup N\sigma(B).
+        \sigma(J_N{\otimes}B) = \left\{ \mu_i\lambda_j;\ i{=}\overline{1,2},\ j{=}\overline{1,M}\right\} = \{0\}\cup N\sigma(B).
     \]
 All of these eigenvalues except for \( 0 \)
     are of multiplicity \( 1 \)
     and well-separated for sufficiently large \( N \).
+Then \( \gamma=\frac1N \).
 This directly implies the theorem of the previous section.
+
+These results might be refined
+    with the use of the theorem on splitting an operator~\cite{baskakov1987theorem}
+    which allows to consider each eigenvalue individually
+    and obtain more precise estimates for the corresponding
+    eigenvalue of the perturbed matrix.
+% The higher the gap between a picked eigenvalue
+%     and the rest of the spectrum
+%     the higher the precision of the estimate
+%     for the corresponding eigenvalue of the perturbed matrix.
     
 
 \section*{Conclusion}
+
 We have derived bounds
     for perturbations of Kronecker products
     of matrices
     using the method of similar operators
-    which is a powerful tool in perturbation analysis.
+    which is a powerful tool in perturbation theory.
 Developed in the context of Banach spaces
     this method turns out to be just as useful
     in finite-dimensional problems.
+
+The problem of perturbation analysis for the Kronecker products
+    despite being old still has a whole open field for future research.
+An example of more general problem
+    yet quite similar to the one just considered
+    is that of analysis of tensor products
+    of finite-dimensional operators (defined by matrices)
+    and abstract operators in Banach spaces.
+
 \section*{References}
 \bibliographystyle{iopart-num}
 \bibliography{sergey_kozlukov_jpcs}{}
