@@ -3,7 +3,8 @@
 I have used packages `amsthm` for theorem environments
 (environments and counters have custom names so no name conflicts)
 and `amsmath` for matrices, `aligned` environment and
-commands `\substack`, `\operatorname`, `\lvert`, `\vline` and `\implies`.
+commands `\substack`, `\operatorname`, `\underbrace`,
+`\lvert`, `\vline` and `\implies`.
 
 I hope this doesn't cause any problems.
 But in case it does, I provide the file `stripped.tex`
