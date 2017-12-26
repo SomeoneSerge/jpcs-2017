@@ -10,11 +10,12 @@
 
 
 \begin{document}
-\title{The method of similar operators in the study of the spectra of adjacency matrices of graphs}
+\title{The method of similar operators in the study of the spectra of the adjacency matrices of graphs}
 
-\author{Serge Kozlukov}
+\author{Serge Kozlukov\\
+Department of Nonlinear Oscillations}
 
-\address{\emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+\address{Voronezh State University, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
 
 \ead{newkozlukov@gmail.com}
 
@@ -22,8 +23,9 @@
     The~method~of~similar~operators~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}
         is used to investigate spectral properties
         of a certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
-    Specifically, we consider matrices
-        obtained as combinations
+    Specifically, we consider
+        the adjacency matrix of an ``almost-complete graph''.
+    Then we generalize the result to allow the matrices obtained as combinations
         of the Kronecker products~\cite{bellman-matrices-kron,XIANG2005210}
         and small-norm perturbations.
     We derive the estimates
@@ -32,20 +34,22 @@
 \end{abstract}
 
 \section{Introduction}
-Consider a~directed graph on \( N \) vertices.
-Its adjacency matrix is defined as
-    the matrix
+Consider a~directed graph on \( N \) vertices without loops and multiple edges.
+It is uniquely defined by its
+adjacency matrix
     \( A = (a_{ij}) \)
     of the size \( N\times N \),
     in which \( a_{ij} \)
     is the number of edges
     from vertex \( i \)
     to vertex \( j \).
-One can also consider generalized
-    adjacency matrices~\cite{van2003graphs}
-    which are defined as
-    arbitrary linear combinations
-    of the matrices \( A \) (or its transpose \( A^\mathtt{T} \)),
+The \emph{simple spectrum} of a graph
+    is defined as the spectrum of its adjacency matrices.
+Different spectra of a graph are defined in terms of different matrices
+    corresponding to this graph.
+It is customary to consider combinations
+    of the matrices \( A \),
+    \( D \) (the out-degree matrix),
     \( E \) (the identity matrix)
     and \( J_N \) (the all-ones matrix).
 These matrices arise naturally
@@ -54,17 +58,14 @@ Spectral  properties of these matrices
     often play a vital role in such models.
 For instance, the markovian random walk on a~graph
     yields the notion of eigenvector centrality
-    in a~network~\cite{bonacich1972factoring}.
-The transition matrix of such a random walk
-    is generalized adjacency matrix of a graph.
-The score of the vertex \( i \)
+    in a~network~\cite{ilprints422,bonacich1972factoring}.
+The score of a vertex \( i \)
     is defined as the \( i \)'th coordinate
-    of the dominating left eigenvector
-    of the transition matrix.
-The largest left eigenvalue of an irreducible column-stochastic matrix
-    is \( 1 \) and the dominating left eigenvector
+    of a dominating (left) eigenvector
+    of the transition matrix of such a process.
+This eigenvector
     defines the only stationary distribution
-    of a random walk.
+    of this random walk.
 The PageRank~\cite{ilprints422} algorithm
     originally used by Google
     to compute the eigenvector centrality
@@ -91,7 +92,7 @@ An asymptotic (endemic or epidemic) behaviour of this system
     and the rates of curage and infection.
 
 We should also note that the Kronecker products
-    of adjacency matrices
+    of the adjacency matrices
     are themselves of interest
     as they correspond to the adjacency matrices of
     \emph{non-complete extended p-sum}s~(NEPS)
@@ -104,6 +105,9 @@ For more details and comprehensive description
 
 \section{The method of similar operators}
 
+In some applications
+    it is infeasible to exactly compute the eigenvalues.
+Then one needs to roughly estimate them.
 We use the abstract method of similar operators
     to estimate the eigenvalues and eigenvectors
     of certain types of such matrices.
@@ -112,12 +116,11 @@ This method originates from Friedrichs~\cite{friedrichs1965advanced}
     by Baskakov~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}.
 It relies on contraction mappings in Banach spaces
     and the Banach fixed-point theorem.
-This approach is often superior to usual methods of perturbation theory
+This approach is often superior to usual methods of perturbation analysis
     that use series expansions.
-Here we will only state the required notation and theorems
-    in a simplified form that accounts
-    for the finite-dimensionality
-    of the problems we consider.
+We are only concerned with finite-dimensional problems
+    so we will only state the required notation and theorems
+    in a simplified form.
 
 Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
     be a field of either real or complex numbers.
@@ -187,7 +190,7 @@ The most important notion
     of the abstract method of similar operators
     is that of an \emph{admissible triple}.
 For our specific purposes it suffices to say
-    that \( (\mathbb{K}^n, J, \Gamma) \)
+    that \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
     forms an \emph{admissible triple}
     for a matrix \( A\in\mathbb{K}^{n{\times}n} \)
     if the following conditions are met:
@@ -348,7 +351,7 @@ One can easily check that \( \|\Gamma\|_{\mathrm{op}} = \frac1N \).
 It is also apparent that \( \|\mathcal{B}\|_{\mathrm{op}} = \|B\|_{\mathrm{op}} \leq \|B\|_{\mathrm{F}} \)
     since multiplication by the orthogonal matrix \( U \)
     is an isometry in Euclidean space.
-The Frobenius norm \( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_ij^2} = M} \)
+The Frobenius norm \( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_{ij}^2} = M} \)
     of \( B \)
     reduces to the square root of the number of absent edges.
 This directly implies the following
@@ -393,13 +396,13 @@ Now let \( A\in\mathbb{K}^{M{\times}M} \)
         \end{pmatrix}
         \in\mathbb{K}^{{MN}{\times}{MN}}
     \]
-    and a perturbed matrix
+    and the perturbed matrix
     \[
         \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{MN}{\times}{MN}}.
     \]
 
 \begin{nkjpcslem}
-    Suppose \( A \) is invertible self-adjoint matrix.
+    Suppose \( A \) is an invertible self-adjoint matrix.
     Then it has \( M \) orthonormal eigenvectors \( h_1, \ldots, h_M \)
     (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,M}\))
     with the corresponding eigenvalues
@@ -605,7 +608,7 @@ for all \( j{=}\overline{1,M}, k{=}\overline{1,N-1} \).
 
 \subsection*{Kronecker products}
 
-Now we consider Kronecker products
+Now we consider Kronecker product
 \[
     A\otimes B =
     \begin{pmatrix}
@@ -631,7 +634,7 @@ We will analyze its spectral properties
 %     (A-\Delta A)\otimes (B - \Delta B).
 % \]
 
-Kronecker product has quite some appealing properties~\cite{bellman-matrices-kron}.
+Kronecker product has several appealing properties~\cite{bellman-matrices-kron}.
 \begin{itemize}
 \item It is associative:
     \[ A\otimes (B\otimes C) = (A\otimes B)\otimes C. \]
@@ -672,7 +675,7 @@ Now suppose that among these pairwise products \( \mu_i \lambda_j \)
     there are only \( s \) distinct values \( \nu_1, \ldots, \nu_s \).
 To each eigenvalue \( \nu_k \) (\( k{=}\overline{1,s} \)) there corresponds
     an eigenspace \[ E_k = \operatorname{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i{=}\overline{1,N},\ j{=}\overline{1,M}) \subset \mathbb{K}^{MN}. \]
-These eigenspace form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
+These eigenspaces form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
     \[ \mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. \]
 Any vector \( x\in\mathbb{K}^{MN} \) can be uniquely represented
     in the form
@@ -703,7 +706,7 @@ The matrix \( A\otimes B \) can be decomposed into
         \mathcal{A} = \sum v_j P_j.
     \]
 
-Now we should be able reproduce the same steps as before
+Now we should be able to reproduce the same steps as before
     to retrieve the estimates.
 
 % \begin{center}
@@ -828,8 +831,7 @@ These results might be refined
 
 We have derived bounds
     for perturbations of Kronecker products
-    of matrices
-    using the method of similar operators
+    of matrices using the method of similar operators
     which is a powerful tool in perturbation theory.
 Developed in the context of Banach spaces
     this method turns out to be just as useful
@@ -837,9 +839,8 @@ Developed in the context of Banach spaces
 
 The problem of perturbation analysis for the Kronecker products
     despite being old still has a whole open field for future research.
-An example of more general problem
-    yet quite similar to the one just considered
-    is that of analysis of tensor products
+An example of more general yet quite similar problem
+    is that of an analysis of tensor products
     of finite-dimensional operators (defined by matrices)
     and abstract operators in Banach spaces.
 
