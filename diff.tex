@@ -1,4 +1,7 @@
 \documentclass[a4paper]{jpconf}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL old.tex                   Thu Dec 28 18:43:10 2017
+%DIF ADD serge_kozlukov_jpcs.tex   Thu Dec 28 19:01:38 2017
 \usepackage{graphicx}
 \usepackage{iopams}
 % amsmath defined substack
@@ -7,15 +10,77 @@
 
 \newtheorem{nkjpcsthm}{Theorem}
 \newtheorem{nkjpcslem}{Lemma}
-
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
-\title{The method of similar operators in the study of the spectra of the adjacency matrices of graphs}
+\title{The method of similar operators in the study of the spectra of \DIFaddbegin \DIFadd{the }\DIFaddend adjacency matrices of graphs}
 
-\author{Serge Kozlukov\\
-Department of Nonlinear Oscillations}
+\author{Serge Kozlukov\DIFaddbegin \\
+\DIFadd{Department of Nonlinear Oscillations}\DIFaddend }
 
-\address{Voronezh State University, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+\DIFdelbegin %DIFDELCMD < \address{\emph{Voronezh State University}, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \address{Voronezh State University, 1 Universitetskaya Ploshad', Voronezh, RU 394036}
+\DIFaddend 
 
 \ead{newkozlukov@gmail.com}
 
@@ -24,10 +89,10 @@ Department of Nonlinear Oscillations}
         is used to investigate spectral properties
         of a certain class of matrices in the context of graphs~\cite{van2003graphs,cvetkovic1980spectra}.
     Specifically, we consider
-        the adjacency matrix of an ``almost-complete graph''.
-    Then we generalize the result to allow the matrices obtained as combinations
+        \DIFaddbegin \DIFadd{the adjacency matrix of an ``almost-complete graph''.
+    Then we generalize the result to allow the }\DIFaddend matrices obtained as combinations
         of the Kronecker products~\cite{bellman-matrices-kron,XIANG2005210}
-        and the small-norm perturbations.
+        and \DIFaddbegin \DIFadd{the }\DIFaddend small-norm perturbations.
     We derive the estimates
         of the spectra and the eigenvectors
         of such matrices.
@@ -35,67 +100,82 @@ Department of Nonlinear Oscillations}
 
 \section{Introduction}
 Consider a~directed graph on \( N \) vertices.
-It is uniquely defined by its
-adjacency matrix
+\DIFdelbegin \DIFdel{Its adjacency matrix is defined as
+    the }\DIFdelend \DIFaddbegin \DIFadd{It is uniquely defined by its
+adjacency }\DIFaddend matrix
     \( A = (a_{ij}) \)
     of the size \( N\times N \),
     in which \( a_{ij} \)
     is the number of edges
-    from the vertex \( i \)
-    to the vertex \( j \).
-The \emph{simple spectrum} of a graph
+    from \DIFaddbegin \DIFadd{the }\DIFaddend vertex \( i \)
+    to \DIFaddbegin \DIFadd{the }\DIFaddend vertex \( j \).
+\DIFdelbegin \DIFdel{One can also consider generalized
+    adjacency matrices~\mbox{%DIFAUXCMD
+\cite{van2003graphs}
+    }\hspace{0pt}%DIFAUXCMD
+which are defined as
+    arbitrary linear }\DIFdelend \DIFaddbegin \DIFadd{The }\emph{\DIFadd{simple spectrum}} \DIFadd{of a graph
     is defined as the spectrum of its adjacency matrix.
 Different spectra of a graph are defined in terms of different matrices
     corresponding to this graph.
-It is customary to consider combinations
-    of the matrices \( A \),
-    \( D \) (the out-degree matrix),
+It is customary to consider }\DIFaddend combinations
+    of the matrices \( A \)\DIFdelbegin \DIFdel{(or its transpose \( A^\mathtt{T} \)}\DIFdelend \DIFaddbegin \DIFadd{,
+    \( D \) (the out-degree matrix}\DIFaddend ),
     \( E \) (the identity matrix)
     and \( J_N \) (the all-ones matrix).
 These matrices arise naturally
     in some stochastic models~\cite[p.~184]{cvetkovic2010introduction}.
 Spectral  properties of these matrices
     often play a vital role in such models.
-For instance, the Markovian random walk on a~graph
+For instance, the \DIFdelbegin \DIFdel{markovian }\DIFdelend \DIFaddbegin \DIFadd{Markovian }\DIFaddend random walk on a~graph
     yields the notion of eigenvector centrality
-    in a~network~\cite{ilprints422,bonacich1972factoring}.
-The score of a vertex \( i \)
+    in a~network~\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\cite{bonacich1972factoring}}\hspace{0pt}%DIFAUXCMD
+.
+The transition matrix of such a random walk
+    is generalized adjacency matrix of a graph.
+The score of the }\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\cite{ilprints422,bonacich1972factoring}}\hspace{0pt}%DIFAUXCMD
+.
+The score of a }\DIFaddend vertex \( i \)
     is defined as the \( i \)'th coordinate
-    of a dominating (left) eigenvector
-    of the transition matrix of such a process.
-This eigenvector
+    of \DIFdelbegin \DIFdel{the dominating left }\DIFdelend \DIFaddbegin \DIFadd{a dominating (left) }\DIFaddend eigenvector
+    of the transition matrix \DIFdelbegin \DIFdel{.
+The largest left eigenvalue of an irreducible column-stochastic matrix
+    is \( 1 \) and the dominating left }\DIFdelend \DIFaddbegin \DIFadd{of such a process.
+This }\DIFaddend eigenvector
     defines the only stationary distribution
-    of this random walk.
+    of \DIFdelbegin \DIFdel{a }\DIFdelend \DIFaddbegin \DIFadd{this }\DIFaddend random walk.
 The PageRank~\cite{ilprints422} algorithm
     originally used by Google
     to compute the eigenvector centrality
     relies on the Power-Method.
 Its speed of convergence depends on
     the ratio of the two largest absolute eigenvalues.
-Stability of a stationary distribution
+Stability of \DIFdelbegin \DIFdel{the }\DIFdelend \DIFaddbegin \DIFadd{a }\DIFaddend stationary distribution
     is determined~\cite{meyer1994sensitivity}
     by the condition number
     which is bounded from below
-    by the spectral gap --- the distance between
+    by \DIFdelbegin \DIFdel{a }\DIFdelend \DIFaddbegin \DIFadd{the }\DIFaddend spectral gap --- the distance between
     the two largest eigenvalues
-    of the transition matrix of a process.
+    of the transition matrix \DIFaddbegin \DIFadd{of a process}\DIFaddend .
 The method of estimation of almost-invariant sets
     proposed in~\cite{schwartz2006fluctuation}
-    also relies on spectral decompositions of such matrices.
+    \DIFdelbegin \DIFdel{relies as well }\DIFdelend \DIFaddbegin \DIFadd{also relies }\DIFaddend on spectral decompositions of such matrices.
 In the Susceptible-Infective-Susceptible model
     a viral spread in a network
-    is modeled~\cite{wang2003epidemic,chakrabarti2008epidemic} as a Markov process
+    is modeled~\cite{wang2003epidemic,chakrabarti2008epidemic} as a \DIFdelbegin \DIFdel{markov }\DIFdelend \DIFaddbegin \DIFadd{Markov }\DIFaddend process
     with \( 2^N \) states.
-An asymptotic (endemic or epidemic) behaviour of such a system
-    is determined by the spectral radius (the largest absolute eigenvalue)
+An asymptotic (endemic or epidemic) behaviour of \DIFdelbegin \DIFdel{this }\DIFdelend \DIFaddbegin \DIFadd{such a }\DIFaddend system
+    is determined by \DIFdelbegin \DIFdel{a }\DIFdelend \DIFaddbegin \DIFadd{the }\DIFaddend spectral radius (the largest absolute eigenvalue)
     of the adjacency matrix
     and the rates of curage and infection.
 
 We should also note that the Kronecker products
-    of the adjacency matrices
+    of \DIFaddbegin \DIFadd{the }\DIFaddend adjacency matrices
     are themselves of interest
     as they correspond to the adjacency matrices of
-    the \emph{non-complete extended p-sum}s~(NEPS)
+    \DIFaddbegin \DIFadd{the }\DIFaddend \emph{non-complete extended p-sum}s~(NEPS)
     of graphs~\cite[p.~44]{cvetkovic2010introduction}.
 
 For more details and comprehensive description
@@ -105,22 +185,25 @@ For more details and comprehensive description
 
 \section{The method of similar operators}
 
-In some applications
+\DIFaddbegin \DIFadd{In some applications
     it is infeasible to compute the exact eigenvalues.
 Then one needs to make reasonable estimates.
-We use the abstract method of similar operators
+}\DIFaddend We use the abstract method of similar operators
     to estimate the eigenvalues and eigenvectors
-    for a certain class of matrices.
+    \DIFdelbegin \DIFdel{of certain types of such }\DIFdelend \DIFaddbegin \DIFadd{for a certain class of }\DIFaddend matrices.
 This method originates from Friedrichs~\cite{friedrichs1965advanced}
     and was later developed in abstract setting
     by Baskakov~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}.
 It relies on contraction mappings in Banach spaces
     and the Banach fixed-point theorem.
-This approach is often superior to usual methods of perturbation analysis
-    that use series expansions.
-We are only concerned with finite-dimensional problems
-    so we will only state the required notation and theorems
-    in a simplified form.
+This approach is often superior to usual methods of perturbation \DIFdelbegin \DIFdel{theory
+    }\DIFdelend \DIFaddbegin \DIFadd{analysis
+    }\DIFaddend that use series expansions.
+\DIFdelbegin \DIFdel{Here }\DIFdelend \DIFaddbegin \DIFadd{We are only concerned with finite-dimensional problems
+    so }\DIFaddend we will only state the required notation and theorems
+    in a simplified form\DIFdelbegin \DIFdel{that accounts
+    for the finite-dimensionality
+    of the problems we consider}\DIFdelend .
 
 Let \( \mathbb{K}\in \{ \mathbb{R}, \mathbb{C} \} \)
     be a field of either real or complex numbers.
@@ -183,15 +266,16 @@ We call two matrices \( A_1, A_2 \) \emph{similar}
     such that \( A_1 U = U A_2 \).
 Similar matrices share some spectral properties:
     they are isospectral (\( \sigma(A_1) = \sigma(A_2) \))
-    and \( U \) maps the eigenvectors of one to another's:
+    and \( U \) maps \DIFaddbegin \DIFadd{the }\DIFaddend eigenvectors of one to another's:
     \( A_2 x = \lambda x \implies A_1 U x = \lambda U x \).
 
 The most important notion
-    in the abstract method of similar operators
+    \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the abstract method of similar operators
     is that of an \emph{admissible triple}.
 For our specific purposes it suffices to say
-    that \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
-    forms an \emph{admissible triple}
+    that \DIFdelbegin \DIFdel{\( (\mathbb{K}^n, J, \Gamma) \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( (\mathbb{K}^{n{\times}n}, J, \Gamma) \)
+    }\DIFaddend forms an \emph{admissible triple}
     for a matrix \( A\in\mathbb{K}^{n{\times}n} \)
     if the following conditions are met:
 \begin{itemize}
@@ -208,7 +292,7 @@ For our specific purposes it suffices to say
 \end{itemize}
 
 The main theorem of the method
-    may be now formulated as follows:
+    may be \DIFdelbegin \DIFdel{then }\DIFdelend \DIFaddbegin \DIFadd{now }\DIFaddend formulated as follows:
 
 \begin{nkjpcsthm}
     Consider a matrix \( A - B \)
@@ -351,8 +435,9 @@ One can easily check that \( \|\Gamma\|_{\mathrm{op}} = \frac1N \).
 It is also apparent that \( \|\mathcal{B}\|_{\mathrm{op}} = \|B\|_{\mathrm{op}} \leq \|B\|_{\mathrm{F}} \)
     since multiplication by the orthogonal matrix \( U \)
     is an isometry in Euclidean space.
-The Frobenius norm \( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_{ij}^2} = M} \)
-    of \( B \)
+The Frobenius norm \DIFdelbegin \DIFdel{\( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_ij^2} = M} \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( {\|B\|_{\mathrm{F}} = \sqrt{\sum_{ij} b_{ij}^2} = M} \)
+    }\DIFaddend of \( B \)
     reduces to the square root of the number of absent edges.
 This directly implies the following
 
@@ -396,13 +481,13 @@ Now let \( A\in\mathbb{K}^{M{\times}M} \)
         \end{pmatrix}
         \in\mathbb{K}^{{MN}{\times}{MN}}
     \]
-    and the perturbed matrix
+    and \DIFdelbegin \DIFdel{a }\DIFdelend \DIFaddbegin \DIFadd{the }\DIFaddend perturbed matrix
     \[
         \mathbb{A} - \mathbb{B},\ \mathbb{B}\in\mathbb{K}^{{MN}{\times}{MN}}.
     \]
 
 \begin{nkjpcslem}
-    Suppose \( A \) is an invertible self-adjoint matrix.
+    Suppose \( A \) is \DIFaddbegin \DIFadd{an }\DIFaddend invertible self-adjoint matrix.
     Then it has \( M \) orthonormal eigenvectors \( h_1, \ldots, h_M \)
     (\(\left\|h_i\right\|_2 = 1,\ i{=}\overline{1,M}\))
     with the corresponding eigenvalues
@@ -608,8 +693,9 @@ for all \( j{=}\overline{1,M}, k{=}\overline{1,N-1} \).
 
 \subsection*{Kronecker products}
 
-Now we consider Kronecker product
-\[
+Now we consider Kronecker \DIFdelbegin \DIFdel{products
+}\DIFdelend \DIFaddbegin \DIFadd{product
+}\DIFaddend \[
     A\otimes B =
     \begin{pmatrix}
         a_{11} B & \cdots & a_{1N} B \\
@@ -634,7 +720,7 @@ We will analyze its spectral properties
 %     (A-\Delta A)\otimes (B - \Delta B).
 % \]
 
-Kronecker product has several appealing properties~\cite{bellman-matrices-kron}.
+Kronecker product has \DIFdelbegin \DIFdel{quite some }\DIFdelend \DIFaddbegin \DIFadd{several }\DIFaddend appealing properties~\cite{bellman-matrices-kron}.
 \begin{itemize}
 \item It is associative:
     \[ A\otimes (B\otimes C) = (A\otimes B)\otimes C. \]
@@ -675,7 +761,7 @@ Now suppose that among these pairwise products \( \mu_i \lambda_j \)
     there are only \( s \) distinct values \( \nu_1, \ldots, \nu_s \).
 To each eigenvalue \( \nu_k \) (\( k{=}\overline{1,s} \)) there corresponds
     an eigenspace \[ E_k = \operatorname{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i{=}\overline{1,N},\ j{=}\overline{1,M}) \subset \mathbb{K}^{MN}. \]
-These eigenspaces form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
+These \DIFdelbegin \DIFdel{eigenspace }\DIFdelend \DIFaddbegin \DIFadd{eigenspaces }\DIFaddend form a direct-sum decomposition of \( \mathbb{K}^{MN} \):
     \[ \mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. \]
 Any vector \( x\in\mathbb{K}^{MN} \) can be uniquely represented
     in the form
@@ -706,7 +792,7 @@ The matrix \( A\otimes B \) can be decomposed into
         \mathcal{A} = \sum v_j P_j.
     \]
 
-Now we should be able to reproduce the same steps as before
+Now we should be able \DIFaddbegin \DIFadd{to }\DIFaddend reproduce the same steps as before
     to retrieve the estimates.
 
 % \begin{center}
@@ -825,7 +911,7 @@ These results might be refined
 %     and the rest of the spectrum
 %     the higher the precision of the estimate
 %     for the corresponding eigenvalue of the perturbed matrix.
-    
+
 
 \section*{Conclusion}
 
@@ -839,12 +925,16 @@ Developed in the context of Banach spaces
 
 The problem of perturbation analysis for the Kronecker products
     despite being old still has a whole open field for future research.
-An example of more general yet quite similar problem
-    is that of an analysis of tensor products
+An example of more general \DIFdelbegin \DIFdel{problem
+    }\DIFdelend yet quite similar \DIFdelbegin \DIFdel{to the one just considered
+    }\DIFdelend \DIFaddbegin \DIFadd{problem
+    }\DIFaddend is that of \DIFaddbegin \DIFadd{an }\DIFaddend analysis of tensor products
     of finite-dimensional operators (defined by matrices)
     and abstract operators in Banach spaces.
 
 \section*{References}
 \bibliographystyle{iopart-num}
-\bibliography{serge_kozlukov_jpcs}{}
-\end{document}
+\DIFdelbegin %DIFDELCMD < \bibliography{sergey_kozlukov_jpcs}{}
+%DIFDELCMD <  %%%
+\DIFdelend \DIFaddbegin \bibliography{serge_kozlukov_jpcs}{}
+ \DIFaddend\end{document}
