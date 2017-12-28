@@ -27,7 +27,7 @@ Department of Nonlinear Oscillations}
         the adjacency matrix of an ``almost-complete graph''.
     Then we generalize the result to allow the matrices obtained as combinations
         of the Kronecker products~\cite{bellman-matrices-kron,XIANG2005210}
-        and small-norm perturbations.
+        and the small-norm perturbations.
     We derive the estimates
         of the spectra and the eigenvectors
         of such matrices.
@@ -72,22 +72,22 @@ The PageRank~\cite{ilprints422} algorithm
     relies on the Power-Method.
 Its speed of convergence depends on
     the ratio of the two largest absolute eigenvalues.
-Stability of the stationary distribution
+Stability of a stationary distribution
     is determined~\cite{meyer1994sensitivity}
     by the condition number
     which is bounded from below
-    by a spectral gap --- the distance between
+    by the spectral gap --- the distance between
     the two largest eigenvalues
-    of the transition matrix.
+    of the transition matrix of a process.
 The method of estimation of almost-invariant sets
     proposed in~\cite{schwartz2006fluctuation}
-    relies as well on spectral decompositions of such matrices.
+    also relies on spectral decompositions of such matrices.
 In the Susceptible-Infective-Susceptible model
     a viral spread in a network
     is modeled~\cite{wang2003epidemic,chakrabarti2008epidemic} as a markov process
     with \( 2^N \) states.
-An asymptotic (endemic or epidemic) behaviour of this system
-    is determined by a spectral radius (the largest absolute eigenvalue)
+An asymptotic (endemic or epidemic) behaviour of such a system
+    is determined by the spectral radius (the largest absolute eigenvalue)
     of the adjacency matrix
     and the rates of curage and infection.
 
@@ -95,7 +95,7 @@ We should also note that the Kronecker products
     of the adjacency matrices
     are themselves of interest
     as they correspond to the adjacency matrices of
-    \emph{non-complete extended p-sum}s~(NEPS)
+    the \emph{non-complete extended p-sum}s~(NEPS)
     of graphs~\cite[p.~44]{cvetkovic2010introduction}.
 
 For more details and comprehensive description
@@ -106,11 +106,11 @@ For more details and comprehensive description
 \section{The method of similar operators}
 
 In some applications
-    it is infeasible to exactly compute the eigenvalues.
-Then one needs to roughly estimate them.
+    it is infeasible to compute the exact eigenvalues.
+Then one needs to make reasonable estimates.
 We use the abstract method of similar operators
     to estimate the eigenvalues and eigenvectors
-    of certain types of such matrices.
+    of certain classes of matrices.
 This method originates from Friedrichs~\cite{friedrichs1965advanced}
     and was later developed in abstract setting
     by Baskakov~\cite{baskakov1983methods,baskakov2017method,baskakov2013completeness}.
