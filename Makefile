@@ -1,4 +1,4 @@
-NAME = sergey_kozlukov_jpcs
+NAME = serge_kozlukov_jpcs
 SOURCES = $(NAME).tex $(NAME).bib jpconf11.clo jpconf.cls iopams.sty
 DOCUMENTS = $(NAME).pdf authors.pdf
 PUB_SOURCES = $(addprefix pub/,$(SOURCES))
